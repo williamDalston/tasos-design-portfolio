@@ -277,14 +277,33 @@
                 <h3 class="text-4xl md:text-5xl font-bold text-white mb-6">
                     Featured <span class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Projects</span>
                 </h3>
-                <p class="text-xl text-white/80 max-w-3xl mx-auto">
+                <p class="text-xl text-white/80 max-w-3xl mx-auto mb-8">
                     Discover our latest creative endeavors and see how we bring ideas to life
                 </p>
+                
+                <!-- Portfolio Filter -->
+                <div class="flex flex-wrap justify-center gap-4 mb-12">
+                    <button onclick="filterPortfolio('all')" class="portfolio-filter-btn active px-6 py-3 rounded-full bg-white/20 text-white font-medium transition-all duration-300 hover:bg-white/30 hover:scale-105 magnetic-btn">
+                        All Projects
+                    </button>
+                    <button onclick="filterPortfolio('branding')" class="portfolio-filter-btn px-6 py-3 rounded-full bg-white/10 text-white/70 font-medium transition-all duration-300 hover:bg-white/20 hover:scale-105 magnetic-btn">
+                        Branding
+                    </button>
+                    <button onclick="filterPortfolio('web')" class="portfolio-filter-btn px-6 py-3 rounded-full bg-white/10 text-white/70 font-medium transition-all duration-300 hover:bg-white/20 hover:scale-105 magnetic-btn">
+                        Web Design
+                    </button>
+                    <button onclick="filterPortfolio('ui')" class="portfolio-filter-btn px-6 py-3 rounded-full bg-white/10 text-white/70 font-medium transition-all duration-300 hover:bg-white/20 hover:scale-105 magnetic-btn">
+                        UI/UX
+                    </button>
+                    <button onclick="filterPortfolio('mobile')" class="portfolio-filter-btn px-6 py-3 rounded-full bg-white/10 text-white/70 font-medium transition-all duration-300 hover:bg-white/20 hover:scale-105 magnetic-btn">
+                        Mobile
+                    </button>
+                </div>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                 <!-- Project 1 -->
-                <div class="group glass-refined p-0 rounded-3xl shadow-2xl overflow-hidden hover:scale-105 transition-all duration-500 refined-hover glow-subtle interactive-card magnetic-hover stagger-item card-lift tilt-card">
+                <div class="group glass-refined p-0 rounded-3xl shadow-2xl overflow-hidden hover:scale-105 transition-all duration-500 refined-hover glow-subtle interactive-card magnetic-hover stagger-item card-lift tilt-card portfolio-item" data-category="branding">
                     <div class="relative h-64 bg-gradient-to-br from-blue-500/30 via-purple-500/20 to-pink-500/30 overflow-hidden">
                         <div class="absolute inset-0 bg-black/20"></div>
                         <div class="absolute inset-0 flex items-center justify-center">
@@ -316,7 +335,7 @@
                 </div>
 
                 <!-- Project 2 -->
-                <div class="group glass-refined p-0 rounded-3xl shadow-2xl overflow-hidden hover:scale-105 transition-all duration-500 refined-hover glow-subtle interactive-card magnetic-hover stagger-item card-lift tilt-card">
+                <div class="group glass-refined p-0 rounded-3xl shadow-2xl overflow-hidden hover:scale-105 transition-all duration-500 refined-hover glow-subtle interactive-card magnetic-hover stagger-item card-lift tilt-card portfolio-item" data-category="web">
                     <div class="relative h-64 bg-gradient-to-br from-green-500/30 via-cyan-500/20 to-blue-500/30 overflow-hidden">
                         <div class="absolute inset-0 bg-black/20"></div>
                         <div class="absolute inset-0 flex items-center justify-center">
@@ -348,7 +367,7 @@
                 </div>
 
                 <!-- Project 3 -->
-                <div class="group glass-refined p-0 rounded-3xl shadow-2xl overflow-hidden hover:scale-105 transition-all duration-500 refined-hover glow-subtle interactive-card magnetic-hover stagger-item card-lift tilt-card">
+                <div class="group glass-refined p-0 rounded-3xl shadow-2xl overflow-hidden hover:scale-105 transition-all duration-500 refined-hover glow-subtle interactive-card magnetic-hover stagger-item card-lift tilt-card portfolio-item" data-category="ui">
                     <div class="relative h-64 bg-gradient-to-br from-pink-500/30 via-orange-500/20 to-red-500/30 overflow-hidden">
                         <div class="absolute inset-0 bg-black/20"></div>
                         <div class="absolute inset-0 flex items-center justify-center">
@@ -2187,9 +2206,474 @@
                 element.addEventListener('click', triggerHapticFeedback);
             });
 
+            // ===== PORTFOLIO FILTERING =====
+            
+            function filterPortfolio(category) {
+                const portfolioItems = document.querySelectorAll('.portfolio-item');
+                const filterButtons = document.querySelectorAll('.portfolio-filter-btn');
+                
+                // Update active button
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                    btn.classList.add('bg-white/10', 'text-white/70');
+                    btn.classList.remove('bg-white/20', 'text-white');
+                });
+                
+                const activeButton = document.querySelector(`[onclick="filterPortfolio('${category}')"]`);
+                if (activeButton) {
+                    activeButton.classList.add('active');
+                    activeButton.classList.remove('bg-white/10', 'text-white/70');
+                    activeButton.classList.add('bg-white/20', 'text-white');
+                }
+                
+                // Filter portfolio items
+                portfolioItems.forEach((item, index) => {
+                    const itemCategory = item.dataset.category;
+                    
+                    if (category === 'all' || itemCategory === category) {
+                        item.classList.remove('hidden');
+                        item.classList.add('visible');
+                        
+                        // Stagger animation
+                        setTimeout(() => {
+                            item.style.transition = 'all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                            item.style.opacity = '1';
+                            item.style.transform = 'scale(1)';
+                        }, index * 100);
+                    } else {
+                        item.style.transition = 'all 0.3s ease';
+                        item.style.opacity = '0';
+                        item.style.transform = 'scale(0.8)';
+                        
+                        setTimeout(() => {
+                            item.classList.add('hidden');
+                            item.classList.remove('visible');
+                        }, 300);
+                    }
+                });
+            }
+
+            // ===== BEFORE/AFTER SLIDER =====
+            
+            function createBeforeAfterSlider(container, beforeImage, afterImage) {
+                const slider = document.createElement('div');
+                slider.className = 'before-after-container';
+                
+                const beforeImg = document.createElement('img');
+                beforeImg.src = beforeImage;
+                beforeImg.className = 'before-after-image before-image';
+                
+                const afterImg = document.createElement('img');
+                afterImg.src = afterImage;
+                afterImg.className = 'before-after-image after-image';
+                
+                const handle = document.createElement('div');
+                handle.className = 'slider-handle';
+                
+                slider.appendChild(afterImg);
+                slider.appendChild(beforeImg);
+                slider.appendChild(handle);
+                
+                // Mouse events
+                let isDragging = false;
+                
+                slider.addEventListener('mousedown', (e) => {
+                    isDragging = true;
+                    slider.style.cursor = 'grabbing';
+                });
+                
+                document.addEventListener('mousemove', (e) => {
+                    if (!isDragging) return;
+                    
+                    const rect = slider.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const percentage = (x / rect.width) * 100;
+                    const clampedPercentage = Math.max(0, Math.min(100, percentage));
+                    
+                    beforeImg.style.clipPath = `inset(0 ${100 - clampedPercentage}% 0 0)`;
+                    handle.style.left = `${clampedPercentage}%`;
+                });
+                
+                document.addEventListener('mouseup', () => {
+                    isDragging = false;
+                    slider.style.cursor = 'grab';
+                });
+                
+                // Touch events for mobile
+                slider.addEventListener('touchstart', (e) => {
+                    isDragging = true;
+                });
+                
+                document.addEventListener('touchmove', (e) => {
+                    if (!isDragging) return;
+                    
+                    const rect = slider.getBoundingClientRect();
+                    const x = e.touches[0].clientX - rect.left;
+                    const percentage = (x / rect.width) * 100;
+                    const clampedPercentage = Math.max(0, Math.min(100, percentage));
+                    
+                    beforeImg.style.clipPath = `inset(0 ${100 - clampedPercentage}% 0 0)`;
+                    handle.style.left = `${clampedPercentage}%`;
+                });
+                
+                document.addEventListener('touchend', () => {
+                    isDragging = false;
+                });
+                
+                container.appendChild(slider);
+            }
+
+            // ===== PROJECT MODAL =====
+            
+            function createProjectModal(projectData) {
+                const modal = document.createElement('div');
+                modal.className = 'project-modal';
+                modal.innerHTML = `
+                    <div class="modal-content">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="text-3xl font-bold text-white">${projectData.title}</h3>
+                            <button onclick="closeProjectModal()" class="text-white/70 hover:text-white text-2xl">&times;</button>
+                        </div>
+                        <div class="before-after-container mb-6">
+                            <img src="${projectData.beforeImage}" class="before-after-image before-image" alt="Before">
+                            <img src="${projectData.afterImage}" class="before-after-image after-image" alt="After">
+                            <div class="slider-handle"></div>
+                        </div>
+                        <div class="text-white/80 space-y-4">
+                            <p>${projectData.description}</p>
+                            <div class="flex flex-wrap gap-2">
+                                ${projectData.technologies.map(tech => 
+                                    `<span class="px-3 py-1 bg-white/10 rounded-full text-sm">${tech}</span>`
+                                ).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                document.body.appendChild(modal);
+                
+                // Initialize before/after slider
+                const sliderContainer = modal.querySelector('.before-after-container');
+                createBeforeAfterSlider(sliderContainer, projectData.beforeImage, projectData.afterImage);
+                
+                // Show modal
+                setTimeout(() => {
+                    modal.classList.add('active');
+                }, 10);
+            }
+            
+            function closeProjectModal() {
+                const modal = document.querySelector('.project-modal');
+                if (modal) {
+                    modal.classList.remove('active');
+                    setTimeout(() => {
+                        modal.remove();
+                    }, 300);
+                }
+            }
+            
+            // Add click handlers to portfolio items
+            document.querySelectorAll('.portfolio-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const category = item.dataset.category;
+                    const projectData = {
+                        title: item.querySelector('h4').textContent,
+                        description: item.querySelector('p').textContent,
+                        beforeImage: 'https://via.placeholder.com/800x400/1e3a8a/ffffff?text=Before',
+                        afterImage: 'https://via.placeholder.com/800x400/7c3aed/ffffff?text=After',
+                        technologies: ['Figma', 'Adobe Creative Suite', 'Three.js', 'CSS3']
+                    };
+                    createProjectModal(projectData);
+                });
+            });
+
             document.querySelectorAll('img[data-src]').forEach(img => {
                 img.classList.add('loading-skeleton');
                 imageObserver.observe(img);
+            });
+
+            // ===== ADVANCED ANIMATIONS & EFFECTS =====
+            
+            // Particle System
+            function createParticleSystem() {
+                const container = document.createElement('div');
+                container.className = 'particle-container';
+                document.body.appendChild(container);
+                
+                function createParticle() {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.animationDelay = Math.random() * 6 + 's';
+                    particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                    container.appendChild(particle);
+                    
+                    setTimeout(() => {
+                        particle.remove();
+                    }, 10000);
+                }
+                
+                // Create particles periodically
+                setInterval(createParticle, 500);
+                
+                // Initial particles
+                for (let i = 0; i < 20; i++) {
+                    setTimeout(createParticle, i * 200);
+                }
+            }
+            
+            // Code Rain Effect
+            function createCodeRain() {
+                const container = document.createElement('div');
+                container.className = 'code-rain';
+                document.body.appendChild(container);
+                
+                const characters = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+                
+                function createCodeColumn() {
+                    const column = document.createElement('div');
+                    column.className = 'code-column';
+                    column.style.left = Math.random() * 100 + '%';
+                    column.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                    
+                    let text = '';
+                    for (let i = 0; i < 20; i++) {
+                        text += characters[Math.floor(Math.random() * characters.length)] + '\n';
+                    }
+                    column.textContent = text;
+                    
+                    container.appendChild(column);
+                    
+                    setTimeout(() => {
+                        column.remove();
+                    }, 5000);
+                }
+                
+                // Create code columns periodically
+                setInterval(createCodeColumn, 1000);
+                
+                // Initial columns
+                for (let i = 0; i < 10; i++) {
+                    setTimeout(createCodeColumn, i * 500);
+                }
+            }
+            
+            // Music Visualizer
+            function createMusicVisualizer() {
+                const visualizer = document.createElement('div');
+                visualizer.className = 'music-visualizer';
+                document.body.appendChild(visualizer);
+                
+                // Create bars
+                for (let i = 0; i < 40; i++) {
+                    const bar = document.createElement('div');
+                    bar.className = 'visualizer-bar';
+                    bar.style.animationDelay = (i * 0.1) + 's';
+                    visualizer.appendChild(bar);
+                }
+            }
+            
+            // Interactive Design Tools
+            function createColorPaletteGenerator() {
+                const tool = document.createElement('div');
+                tool.className = 'fixed bottom-20 left-4 glass-refined p-4 rounded-2xl z-50';
+                tool.innerHTML = `
+                    <h4 class="text-white font-bold mb-3">Color Palette Generator</h4>
+                    <div class="grid grid-cols-5 gap-2 mb-3">
+                        <div class="w-8 h-8 rounded-full bg-blue-500 cursor-pointer hover:scale-110 transition-transform" onclick="generatePalette('blue')"></div>
+                        <div class="w-8 h-8 rounded-full bg-purple-500 cursor-pointer hover:scale-110 transition-transform" onclick="generatePalette('purple')"></div>
+                        <div class="w-8 h-8 rounded-full bg-pink-500 cursor-pointer hover:scale-110 transition-transform" onclick="generatePalette('pink')"></div>
+                        <div class="w-8 h-8 rounded-full bg-green-500 cursor-pointer hover:scale-110 transition-transform" onclick="generatePalette('green')"></div>
+                        <div class="w-8 h-8 rounded-full bg-orange-500 cursor-pointer hover:scale-110 transition-transform" onclick="generatePalette('orange')"></div>
+                    </div>
+                    <div id="generated-palette" class="space-y-2"></div>
+                `;
+                document.body.appendChild(tool);
+            }
+            
+            function generatePalette(baseColor) {
+                const palette = document.getElementById('generated-palette');
+                const colors = {
+                    blue: ['#1e3a8a', '#3b82f6', '#60a5fa', '#93c5fd', '#dbeafe'],
+                    purple: ['#581c87', '#8b5cf6', '#a78bfa', '#c4b5fd', '#ede9fe'],
+                    pink: ['#831843', '#ec4899', '#f472b6', '#f9a8d4', '#fce7f3'],
+                    green: ['#14532d', '#22c55e', '#4ade80', '#86efac', '#dcfce7'],
+                    orange: ['#9a3412', '#f97316', '#fb923c', '#fdba74', '#fed7aa']
+                };
+                
+                palette.innerHTML = colors[baseColor].map(color => 
+                    `<div class="flex items-center gap-2">
+                        <div class="w-6 h-6 rounded" style="background: ${color}"></div>
+                        <span class="text-white/70 text-sm">${color}</span>
+                    </div>`
+                ).join('');
+            }
+            
+            // Typography Showcase
+            function createTypographyShowcase() {
+                const showcase = document.createElement('div');
+                showcase.className = 'fixed top-1/2 right-4 transform -translate-y-1/2 glass-refined p-6 rounded-2xl z-50 max-w-xs';
+                showcase.innerHTML = `
+                    <h4 class="text-white font-bold mb-4">Typography Showcase</h4>
+                    <div class="space-y-4">
+                        <div>
+                            <h5 class="text-blue-300 text-sm mb-2">Heading Font</h5>
+                            <p class="text-white text-2xl font-bold">Taso's Designs</p>
+                        </div>
+                        <div>
+                            <h5 class="text-blue-300 text-sm mb-2">Body Font</h5>
+                            <p class="text-white/80 text-sm leading-relaxed">Beautiful typography creates emotional connections and enhances readability.</p>
+                        </div>
+                        <div>
+                            <h5 class="text-blue-300 text-sm mb-2">Accent Font</h5>
+                            <p class="text-purple-300 text-lg italic">Elegant & Modern</p>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(showcase);
+            }
+            
+            // Initialize advanced effects
+            createParticleSystem();
+            createCodeRain();
+            createMusicVisualizer();
+            createColorPaletteGenerator();
+            createTypographyShowcase();
+
+            // ===== CREATIVE EASTER EGGS =====
+            
+            // Konami Code Easter Egg
+            let konamiCode = [];
+            const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
+            
+            document.addEventListener('keydown', (e) => {
+                konamiCode.push(e.code);
+                if (konamiCode.length > konamiSequence.length) {
+                    konamiCode.shift();
+                }
+                
+                if (konamiCode.join(',') === konamiSequence.join(',')) {
+                    triggerEasterEgg();
+                    konamiCode = [];
+                }
+            });
+            
+            function triggerEasterEgg() {
+                // Create matrix-style effect
+                const matrix = document.createElement('div');
+                matrix.className = 'fixed inset-0 bg-black z-50 flex items-center justify-center';
+                matrix.innerHTML = `
+                    <div class="text-center">
+                        <h1 class="text-green-400 text-6xl font-mono mb-4">TASO'S SECRET</h1>
+                        <p class="text-green-300 text-xl mb-8">You found the hidden developer mode!</p>
+                        <div class="text-green-500 text-sm space-y-2">
+                            <p>🎨 Design Mode: Activated</p>
+                            <p>⚡ Performance: Optimized</p>
+                            <p>🚀 Features: Unlocked</p>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(matrix);
+                
+                // Matrix rain effect
+                createMatrixRain();
+                
+                setTimeout(() => {
+                    matrix.remove();
+                }, 5000);
+            }
+            
+            function createMatrixRain() {
+                const canvas = document.createElement('canvas');
+                canvas.style.position = 'fixed';
+                canvas.style.top = '0';
+                canvas.style.left = '0';
+                canvas.style.width = '100%';
+                canvas.style.height = '100%';
+                canvas.style.zIndex = '51';
+                canvas.style.pointerEvents = 'none';
+                document.body.appendChild(canvas);
+                
+                const ctx = canvas.getContext('2d');
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                
+                const chars = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+                const fontSize = 14;
+                const columns = canvas.width / fontSize;
+                const drops = Array(Math.floor(columns)).fill(1);
+                
+                function draw() {
+                    ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    
+                    ctx.fillStyle = '#0F0';
+                    ctx.font = fontSize + 'px monospace';
+                    
+                    for (let i = 0; i < drops.length; i++) {
+                        const text = chars[Math.floor(Math.random() * chars.length)];
+                        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                        
+                        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                            drops[i] = 0;
+                        }
+                        drops[i]++;
+                    }
+                }
+                
+                const interval = setInterval(draw, 50);
+                
+                setTimeout(() => {
+                    clearInterval(interval);
+                    canvas.remove();
+                }, 5000);
+            }
+            
+            // Hidden Design Mode Toggle
+            let designMode = false;
+            function toggleDesignMode() {
+                designMode = !designMode;
+                if (designMode) {
+                    document.body.classList.add('design-mode');
+                    showDesignTools();
+                } else {
+                    document.body.classList.remove('design-mode');
+                    hideDesignTools();
+                }
+            }
+            
+            function showDesignTools() {
+                const tools = document.createElement('div');
+                tools.id = 'design-tools';
+                tools.className = 'fixed top-20 right-4 glass-refined p-4 rounded-2xl z-50';
+                tools.innerHTML = `
+                    <h4 class="text-white font-bold mb-3">Design Mode</h4>
+                    <div class="space-y-2">
+                        <button onclick="toggleGrid()" class="w-full px-3 py-2 bg-blue-500/20 text-blue-300 rounded text-sm">Toggle Grid</button>
+                        <button onclick="toggleRulers()" class="w-full px-3 py-2 bg-purple-500/20 text-purple-300 rounded text-sm">Toggle Rulers</button>
+                        <button onclick="toggleWireframe()" class="w-full px-3 py-2 bg-green-500/20 text-green-300 rounded text-sm">Wireframe Mode</button>
+                    </div>
+                `;
+                document.body.appendChild(tools);
+            }
+            
+            function hideDesignTools() {
+                const tools = document.getElementById('design-tools');
+                if (tools) tools.remove();
+            }
+            
+            // Double-click to toggle design mode
+            document.addEventListener('dblclick', toggleDesignMode);
+            
+            // Secret click sequence (click logo 5 times)
+            let logoClicks = 0;
+            document.querySelector('h1').addEventListener('click', () => {
+                logoClicks++;
+                if (logoClicks === 5) {
+                    triggerEasterEgg();
+                    logoClicks = 0;
+                }
+                setTimeout(() => logoClicks = 0, 3000);
             });
 
             // OUTSIDE-THE-BOX MAGNETIC EFFECTS
