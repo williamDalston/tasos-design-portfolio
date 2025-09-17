@@ -3583,10 +3583,10 @@
         </div>
     </footer>
     
-    <!-- Advanced Cursor Follower with Trail -->
-    <div class="cursor-follow fixed w-4 h-4 bg-white/20 rounded-full pointer-events-none z-50 mix-blend-difference transition-all duration-100 ease-out" style="transform: translate(-50%, -50%);"></div>
+    <!-- Advanced Cursor Follower with Trail - Disabled for better UX -->
+    <!-- <div class="cursor-follow fixed w-4 h-4 bg-white/20 rounded-full pointer-events-none z-50 mix-blend-difference transition-all duration-100 ease-out" style="transform: translate(-50%, -50%);"></div>
     <div class="cursor-trail fixed w-2 h-2 bg-blue-400/30 rounded-full pointer-events-none z-50 transition-all duration-300 ease-out" style="transform: translate(-50%, -50%);"></div>
-    <div class="cursor-trail-2 fixed w-1 h-1 bg-purple-400/20 rounded-full pointer-events-none z-50 transition-all duration-500 ease-out" style="transform: translate(-50%, -50%);"></div>
+    <div class="cursor-trail-2 fixed w-1 h-1 bg-purple-400/20 rounded-full pointer-events-none z-50 transition-all duration-500 ease-out" style="transform: translate(-50%, -50%);"></div> -->
     
     <!-- Interactive Particle System -->
     <div id="particle-container" class="fixed inset-0 pointer-events-none z-10"></div>
@@ -3618,7 +3618,7 @@
     </div>
     
     <!-- Loading indicator -->
-    <div id="loading" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div id="loading" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-60">
         <div class="text-white text-center">
             <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
             <p>Loading Taso's Designs...</p>
@@ -3699,7 +3699,7 @@
     <!-- ===== COMPREHENSIVE BRAND EXPERIENCE ===== -->
     
     <!-- 3D Product Configurator Modal -->
-        <div id="configurator-modal" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden items-center justify-center">
+        <div id="configurator-modal" class="fixed inset-0 bg-black bg-opacity-90 z-40 hidden items-center justify-center">
         <div class="bg-white rounded-3xl p-8 max-w-6xl w-full mx-4 max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center mb-6">
                 <h2 class="text-3xl font-bold" style="color: var(--plum);">Rain Bag 3D Configurator</h2>
@@ -3793,7 +3793,7 @@
     </div>
 
     <!-- Personal Heritage Mark Generator -->
-    <div id="heritage-generator" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden items-center justify-center">
+    <div id="heritage-generator" class="fixed inset-0 bg-black bg-opacity-90 z-40 hidden items-center justify-center">
         <div class="bg-white rounded-3xl p-8 max-w-4xl w-full mx-4">
             <div class="flex justify-between items-center mb-6">
                 <h2 class="text-3xl font-bold" style="color: var(--plum);">Create Your Personal Heritage Mark</h2>
@@ -3853,7 +3853,7 @@
     </div>
 
     <!-- Smart Project Brief Modal -->
-    <div id="project-brief-modal" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden items-center justify-center">
+    <div id="project-brief-modal" class="fixed inset-0 bg-black bg-opacity-90 z-40 hidden items-center justify-center">
         <div class="bg-white rounded-3xl p-8 max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center mb-6">
                 <h2 class="text-3xl font-bold" style="color: var(--plum);">Smart Project Brief</h2>
@@ -4129,21 +4129,21 @@
             // Subtle cursor following effect (desktop only)
             if (window.innerWidth > 768) {
                 document.addEventListener('mousemove', (e) => {
-                    const cursor = document.querySelector('.cursor-follow');
-                    if (cursor) {
-                        cursor.style.left = e.clientX + 'px';
-                        cursor.style.top = e.clientY + 'px';
-                    }
+                    // const cursor = document.querySelector('.cursor-follow'); // Disabled
+                    // if (cursor) { // Disabled
+                    //     cursor.style.left = e.clientX + 'px';
+                    //     cursor.style.top = e.clientY + 'px';
+                    // }
                 });
             }
             
             // Mobile-specific optimizations
             if (window.innerWidth <= 768) {
                 // Disable cursor follower on mobile
-                const cursor = document.querySelector('.cursor-follow');
-                if (cursor) {
-                    cursor.style.display = 'none';
-                }
+                // const cursor = document.querySelector('.cursor-follow'); // Disabled
+                // if (cursor) { // Disabled
+                //     cursor.style.display = 'none';
+                // }
                 
                 // Optimize touch interactions
                 document.querySelectorAll('button, a').forEach(element => {
@@ -4987,7 +4987,7 @@
             // Interactive Design Tools
             function createColorPaletteGenerator() {
                 const tool = document.createElement('div');
-                tool.className = 'fixed bottom-20 left-4 glass-refined p-4 rounded-2xl z-50';
+                tool.className = 'fixed bottom-20 left-4 glass-refined p-4 rounded-2xl z-30';
                 tool.innerHTML = `
                     <h4 class="text-white font-bold mb-3">Color Palette Generator</h4>
                     <div class="grid grid-cols-5 gap-2 mb-3">
@@ -5023,7 +5023,7 @@
             // Typography Showcase
             function createTypographyShowcase() {
                 const showcase = document.createElement('div');
-                showcase.className = 'fixed top-1/2 right-4 transform -translate-y-1/2 glass-refined p-6 rounded-2xl z-50 max-w-xs';
+                showcase.className = 'fixed top-1/2 right-4 transform -translate-y-1/2 glass-refined p-6 rounded-2xl z-30 max-w-xs';
                 showcase.innerHTML = `
                     <h4 class="text-white font-bold mb-4">Typography Showcase</h4>
                     <div class="space-y-4">
@@ -5050,6 +5050,7 @@
             // createMusicVisualizer(); // Disabled - too distracting
             // createColorPaletteGenerator(); // Disabled - too distracting
             // createTypographyShowcase(); // Disabled - too distracting
+            // showDesignTools(); // Disabled - too distracting
 
             // ===== NEXT-LEVEL FEATURES =====
             
@@ -5705,7 +5706,7 @@
             function triggerEasterEgg() {
                 // Create matrix-style effect
                 const matrix = document.createElement('div');
-                matrix.className = 'fixed inset-0 bg-black z-50 flex items-center justify-center';
+                matrix.className = 'fixed inset-0 bg-black z-60 flex items-center justify-center';
                 matrix.innerHTML = `
                     <div class="text-center">
                         <h1 class="text-green-400 text-6xl font-mono mb-4">TASO'S SECRET</h1>
@@ -5789,7 +5790,7 @@
             function showDesignTools() {
                 const tools = document.createElement('div');
                 tools.id = 'design-tools';
-                tools.className = 'fixed top-20 right-4 glass-refined p-4 rounded-2xl z-50';
+                tools.className = 'fixed top-20 right-4 glass-refined p-4 rounded-2xl z-30';
                 tools.innerHTML = `
                     <h4 class="text-white font-bold mb-3">Design Mode</h4>
                     <div class="space-y-2">
@@ -5838,22 +5839,22 @@
                 trail2X += (trailMouseX - trail2X) * 0.025;
                 trail2Y += (trailMouseY - trail2Y) * 0.025;
 
-                const trail = document.querySelector('.cursor-trail');
-                const trail2 = document.querySelector('.cursor-trail-2');
-                const follow = document.querySelector('.cursor-follow');
+                // const trail = document.querySelector('.cursor-trail'); // Disabled
+                // const trail2 = document.querySelector('.cursor-trail-2'); // Disabled
+                // const follow = document.querySelector('.cursor-follow'); // Disabled
 
-                if (trail) {
-                    trail.style.left = trailX + 'px';
-                    trail.style.top = trailY + 'px';
-                }
-                if (trail2) {
-                    trail2.style.left = trail2X + 'px';
-                    trail2.style.top = trail2Y + 'px';
-                }
-                if (follow) {
-                    follow.style.left = trailMouseX + 'px';
-                    follow.style.top = trailMouseY + 'px';
-                }
+                // if (trail) { // Disabled
+                //     trail.style.left = trailX + 'px';
+                //     trail.style.top = trailY + 'px';
+                // }
+                // if (trail2) { // Disabled
+                //     trail2.style.left = trail2X + 'px';
+                //     trail2.style.top = trail2Y + 'px';
+                // }
+                // if (follow) { // Disabled
+                //     follow.style.left = trailMouseX + 'px';
+                //     follow.style.top = trailMouseY + 'px';
+                // }
 
                 requestAnimationFrame(updateCursorTrails);
             }
@@ -6187,13 +6188,13 @@
                 });
 
                 // Dynamic cursor trail intensity based on scroll
-                const cursorTrail = document.querySelector('.cursor-trail');
-                const cursorTrail2 = document.querySelector('.cursor-trail-2');
-                if (cursorTrail && cursorTrail2) {
-                    const intensity = Math.max(0.3, 1 - (scrolled / (window.innerHeight * 2)));
-                    cursorTrail.style.opacity = intensity;
-                    cursorTrail2.style.opacity = intensity * 0.7;
-                }
+                // const cursorTrail = document.querySelector('.cursor-trail'); // Disabled
+                // const cursorTrail2 = document.querySelector('.cursor-trail-2'); // Disabled
+                // if (cursorTrail && cursorTrail2) { // Disabled
+                //     const intensity = Math.max(0.3, 1 - (scrolled / (window.innerHeight * 2)));
+                //     cursorTrail.style.opacity = intensity;
+                //     cursorTrail2.style.opacity = intensity * 0.7;
+                // }
 
                 advancedScrollTicking = false;
             }
