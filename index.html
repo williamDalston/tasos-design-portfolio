@@ -7,6 +7,7 @@
     <meta name="description" content="Professional design studio specializing in digital art, web design, UI/UX, and branding. Transform your ideas into stunning visual experiences.">
     <meta name="keywords" content="design, digital art, web design, UI/UX, branding, creative studio">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>">
+    <!-- Note: CDN version for development. For production, install Tailwind CSS as PostCSS plugin -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <link rel="stylesheet" href="css/styles.css">
@@ -1500,14 +1501,26 @@
         
         const app = new App();
         
+        // Hide loading screen when app is ready
+        app.onReady = () => {
+            const loadingIndicator = document.getElementById('loading');
+            if (loadingIndicator) {
+                loadingIndicator.style.display = 'none';
+            }
+        };
+        
         // Loading and transition system
         function initLoadingAndTransitions() {
             const loadingContainer = document.getElementById('loading-container');
+            const loadingIndicator = document.getElementById('loading');
             const pageTransition = document.getElementById('page-transition');
             
             // Simulate loading time
             setTimeout(() => {
                 loadingContainer.classList.add('fade-out');
+                if (loadingIndicator) {
+                    loadingIndicator.style.display = 'none';
+                }
                 setTimeout(() => {
                     loadingContainer.style.display = 'none';
                 }, 500);
@@ -1542,10 +1555,40 @@
             });
         }
         
-        window.onload = () => {
+        // Initialize app immediately and on window load
+        try {
             app.init();
-            setupNavigation();
-            initLoadingAndTransitions();
+        } catch (error) {
+            console.error('App initialization failed:', error);
+            // Hide loading screen even if app fails
+            const loadingIndicator = document.getElementById('loading');
+            if (loadingIndicator) {
+                loadingIndicator.style.display = 'none';
+            }
+        }
+        
+        // Fallback: Hide loading screen after maximum time
+        setTimeout(() => {
+            const loadingIndicator = document.getElementById('loading');
+            if (loadingIndicator && loadingIndicator.style.display !== 'none') {
+                console.log('Fallback: Hiding loading screen after timeout');
+                loadingIndicator.style.display = 'none';
+            }
+        }, 5000);
+        
+        window.onload = () => {
+            try {
+                app.init();
+                setupNavigation();
+                initLoadingAndTransitions();
+            } catch (error) {
+                console.error('App initialization failed on window load:', error);
+                // Hide loading screen even if app fails
+                const loadingIndicator = document.getElementById('loading');
+                if (loadingIndicator) {
+                    loadingIndicator.style.display = 'none';
+                }
+            }
         };
         
         function setupNavigation() {
@@ -3138,22 +3181,22 @@
             }, 1000);
             
             // Add subtle animations to elements
-            const observerOptions = {
+            const animationObserverOptions = {
                 threshold: 0.1,
                 rootMargin: '0px 0px -50px 0px'
             };
             
-            const observer = new IntersectionObserver((entries) => {
+            const animationObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('fade-in-up');
                     }
                 });
-            }, observerOptions);
+            }, animationObserverOptions);
             
             // Observe all sections for fade-in animation
             document.querySelectorAll('section').forEach(section => {
-                observer.observe(section);
+                animationObserver.observe(section);
             });
 
             // ===== CREATIVE EASTER EGGS =====
@@ -3295,20 +3338,20 @@
             // OUTSIDE-THE-BOX MAGNETIC EFFECTS
 
             // Advanced Cursor Trail System
-            let mouseX = 0, mouseY = 0;
+            let trailMouseX = 0, trailMouseY = 0;
             let trailX = 0, trailY = 0;
             let trail2X = 0, trail2Y = 0;
 
             document.addEventListener('mousemove', (e) => {
-                mouseX = e.clientX;
-                mouseY = e.clientY;
+                trailMouseX = e.clientX;
+                trailMouseY = e.clientY;
             });
 
             function updateCursorTrails() {
-                trailX += (mouseX - trailX) * 0.1;
-                trailY += (mouseY - trailY) * 0.1;
-                trail2X += (mouseX - trail2X) * 0.05;
-                trail2Y += (mouseY - trail2Y) * 0.05;
+                trailX += (trailMouseX - trailX) * 0.1;
+                trailY += (trailMouseY - trailY) * 0.1;
+                trail2X += (trailMouseX - trail2X) * 0.05;
+                trail2Y += (trailMouseY - trail2Y) * 0.05;
 
                 const trail = document.querySelector('.cursor-trail');
                 const trail2 = document.querySelector('.cursor-trail-2');
@@ -3323,8 +3366,8 @@
                     trail2.style.top = trail2Y + 'px';
                 }
                 if (follow) {
-                    follow.style.left = mouseX + 'px';
-                    follow.style.top = mouseY + 'px';
+                    follow.style.left = trailMouseX + 'px';
+                    follow.style.top = trailMouseY + 'px';
                 }
 
                 requestAnimationFrame(updateCursorTrails);
@@ -3408,9 +3451,9 @@
             setInterval(createAdvancedParticle, 200);
             updateParticles();
 
-            // Code Rain Effect
+            // Code Rain Effect (Advanced)
             const codeChars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
-            function createCodeRain() {
+            function createAdvancedCodeRain() {
                 const char = document.createElement('div');
                 char.className = 'code-rain-char';
                 char.textContent = codeChars[Math.floor(Math.random() * codeChars.length)];
@@ -3423,7 +3466,7 @@
                 }, 5000);
             }
 
-            setInterval(createCodeRain, 100);
+            setInterval(createAdvancedCodeRain, 100);
 
             // Music Visualizer (Simulated)
             function animateMusicVisualizer() {
@@ -3632,7 +3675,7 @@
             setInterval(createMagneticField, 4000);
 
             // Enhanced Advanced Scroll Effects
-            let scrollTicking = false;
+            let advancedScrollTicking = false;
             function updateAdvancedScrollEffects() {
                 const scrolled = window.pageYOffset;
                 const rate = scrolled * -0.5;
@@ -3667,29 +3710,29 @@
                     cursorTrail2.style.opacity = intensity * 0.7;
                 }
 
-                scrollTicking = false;
+                advancedScrollTicking = false;
             }
 
             function requestAdvancedTick() {
-                if (!scrollTicking) {
+                if (!advancedScrollTicking) {
                     requestAnimationFrame(updateAdvancedScrollEffects);
-                    scrollTicking = true;
+                    advancedScrollTicking = true;
                 }
             }
 
             window.addEventListener('scroll', requestAdvancedTick);
 
-            // Easter Egg: Konami Code
-            let konamiCode = [];
-            const konamiSequence = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]; // ↑↑↓↓←→←→BA
+            // Easter Egg: Konami Code (Alternative)
+            let konamiCodeAlt = [];
+            const konamiSequenceAlt = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]; // ↑↑↓↓←→←→BA
 
             document.addEventListener('keydown', (e) => {
-                konamiCode.push(e.keyCode);
-                if (konamiCode.length > konamiSequence.length) {
-                    konamiCode.shift();
+                konamiCodeAlt.push(e.keyCode);
+                if (konamiCodeAlt.length > konamiSequenceAlt.length) {
+                    konamiCodeAlt.shift();
                 }
                 
-                if (konamiCode.join(',') === konamiSequence.join(',')) {
+                if (konamiCodeAlt.join(',') === konamiSequenceAlt.join(',')) {
                     // Activate special effects
                     document.body.style.filter = 'hue-rotate(180deg)';
                     document.getElementById('music-visualizer').classList.remove('hidden');
@@ -3699,7 +3742,7 @@
                         document.getElementById('music-visualizer').classList.add('hidden');
                     }, 10000);
                     
-                    konamiCode = [];
+                    konamiCodeAlt = [];
                 }
             });
 
