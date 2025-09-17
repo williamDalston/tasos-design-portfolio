@@ -2595,35 +2595,7 @@
             // ===== NEXT-LEVEL FEATURES =====
             
             // AI Design Assistant
-            function createAIAssistant() {
-                const assistant = document.createElement('div');
-                assistant.className = 'ai-assistant';
-                assistant.innerHTML = `
-                    <div class="ai-header">
-                        <div class="ai-avatar">🤖</div>
-                        <h4 class="text-white font-bold">AI Design Assistant</h4>
-                    </div>
-                    <div class="ai-suggestions" id="ai-suggestions">
-                        <div class="ai-suggestion" onclick="applyAISuggestion('color')">
-                            💡 Try a warmer color palette
-                        </div>
-                        <div class="ai-suggestion" onclick="applyAISuggestion('typography')">
-                            ✨ Increase font contrast
-                        </div>
-                        <div class="ai-suggestion" onclick="applyAISuggestion('spacing')">
-                            📐 Add more white space
-                        </div>
-                    </div>
-                    <input type="text" class="ai-input" placeholder="Ask me about design..." onkeypress="handleAIInput(event)">
-                `;
-                document.body.appendChild(assistant);
-                
-                // Show assistant after 3 seconds
-                setTimeout(() => {
-                    assistant.classList.add('active');
-                }, 3000);
-            }
-            
+            // AI Design Assistant Functions (Global Scope)
             function applyAISuggestion(type) {
                 const suggestions = {
                     color: () => {
@@ -2668,6 +2640,35 @@
                         response.textContent = '✨ Great suggestion! I\'ll help you implement that.';
                     }, 1000);
                 }
+            }
+            
+            function createAIAssistant() {
+                const assistant = document.createElement('div');
+                assistant.className = 'ai-assistant';
+                assistant.innerHTML = `
+                    <div class="ai-header">
+                        <div class="ai-avatar">🤖</div>
+                        <h4 class="text-white font-bold">AI Design Assistant</h4>
+                    </div>
+                    <div class="ai-suggestions" id="ai-suggestions">
+                        <div class="ai-suggestion" onclick="applyAISuggestion('color')">
+                            💡 Try a warmer color palette
+                        </div>
+                        <div class="ai-suggestion" onclick="applyAISuggestion('typography')">
+                            ✨ Increase font contrast
+                        </div>
+                        <div class="ai-suggestion" onclick="applyAISuggestion('spacing')">
+                            📐 Add more white space
+                        </div>
+                    </div>
+                    <input type="text" class="ai-input" placeholder="Ask me about design..." onkeypress="handleAIInput(event)">
+                `;
+                document.body.appendChild(assistant);
+                
+                // Show assistant after 3 seconds
+                setTimeout(() => {
+                    assistant.classList.add('active');
+                }, 3000);
             }
             
             // 3D Model Viewer
