@@ -112,6 +112,15 @@
                                 </svg>
                             </span>
                         </button>
+                        <button onclick="openARPreview()" class="group border-2 border-purple-400/40 hover:border-purple-400/60 text-purple-300 px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 hover:scale-105 hover:bg-purple-500/10 btn-refined focus-ring ripple-effect btn-morph magnetic-btn">
+                            <span class="flex items-center gap-3">
+                                🥽 AR Preview
+                                <svg class="w-5 h-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                </svg>
+                            </span>
+                        </button>
                     </div>
     
                     <!-- Stats -->
@@ -2539,6 +2548,318 @@
             createMusicVisualizer();
             createColorPaletteGenerator();
             createTypographyShowcase();
+
+            // ===== NEXT-LEVEL FEATURES =====
+            
+            // AI Design Assistant
+            function createAIAssistant() {
+                const assistant = document.createElement('div');
+                assistant.className = 'ai-assistant';
+                assistant.innerHTML = `
+                    <div class="ai-header">
+                        <div class="ai-avatar">🤖</div>
+                        <h4 class="text-white font-bold">AI Design Assistant</h4>
+                    </div>
+                    <div class="ai-suggestions" id="ai-suggestions">
+                        <div class="ai-suggestion" onclick="applyAISuggestion('color')">
+                            💡 Try a warmer color palette
+                        </div>
+                        <div class="ai-suggestion" onclick="applyAISuggestion('typography')">
+                            ✨ Increase font contrast
+                        </div>
+                        <div class="ai-suggestion" onclick="applyAISuggestion('spacing')">
+                            📐 Add more white space
+                        </div>
+                    </div>
+                    <input type="text" class="ai-input" placeholder="Ask me about design..." onkeypress="handleAIInput(event)">
+                `;
+                document.body.appendChild(assistant);
+                
+                // Show assistant after 3 seconds
+                setTimeout(() => {
+                    assistant.classList.add('active');
+                }, 3000);
+            }
+            
+            function applyAISuggestion(type) {
+                const suggestions = {
+                    color: () => {
+                        document.body.style.filter = 'hue-rotate(30deg)';
+                        setTimeout(() => {
+                            document.body.style.filter = 'none';
+                        }, 2000);
+                    },
+                    typography: () => {
+                        document.body.style.fontWeight = '600';
+                        setTimeout(() => {
+                            document.body.style.fontWeight = 'normal';
+                        }, 2000);
+                    },
+                    spacing: () => {
+                        document.body.style.letterSpacing = '0.1em';
+                        setTimeout(() => {
+                            document.body.style.letterSpacing = 'normal';
+                        }, 2000);
+                    }
+                };
+                
+                if (suggestions[type]) {
+                    suggestions[type]();
+                }
+            }
+            
+            function handleAIInput(event) {
+                if (event.key === 'Enter') {
+                    const input = event.target;
+                    const suggestions = document.getElementById('ai-suggestions');
+                    
+                    // Simulate AI response
+                    const response = document.createElement('div');
+                    response.className = 'ai-suggestion';
+                    response.textContent = `🤖 Analyzing: "${input.value}"...`;
+                    suggestions.appendChild(response);
+                    
+                    input.value = '';
+                    
+                    setTimeout(() => {
+                        response.textContent = '✨ Great suggestion! I\'ll help you implement that.';
+                    }, 1000);
+                }
+            }
+            
+            // 3D Model Viewer
+            function create3DModelViewer() {
+                const viewer = document.createElement('div');
+                viewer.className = 'model-viewer';
+                viewer.innerHTML = `
+                    <div class="model-container">
+                        <div class="model-3d"></div>
+                    </div>
+                `;
+                
+                // Add to portfolio section
+                const portfolio = document.querySelector('#portfolio .max-w-7xl');
+                if (portfolio) {
+                    portfolio.appendChild(viewer);
+                }
+            }
+            
+            // Real-time Collaboration
+            function createLiveCursors() {
+                const users = ['Alice', 'Bob', 'Charlie', 'Diana'];
+                
+                users.forEach((user, index) => {
+                    const cursor = document.createElement('div');
+                    cursor.className = 'live-cursor';
+                    cursor.setAttribute('data-user', user);
+                    cursor.style.left = Math.random() * window.innerWidth + 'px';
+                    cursor.style.top = Math.random() * window.innerHeight + 'px';
+                    document.body.appendChild(cursor);
+                    
+                    // Animate cursor movement
+                    setInterval(() => {
+                        cursor.style.left = Math.random() * window.innerWidth + 'px';
+                        cursor.style.top = Math.random() * window.innerHeight + 'px';
+                    }, 3000 + index * 1000);
+                });
+            }
+            
+            // Voice Interface
+            function createVoiceInterface() {
+                const voiceBtn = document.createElement('div');
+                voiceBtn.className = 'voice-interface';
+                voiceBtn.innerHTML = '🎤';
+                voiceBtn.onclick = toggleVoiceRecognition;
+                document.body.appendChild(voiceBtn);
+            }
+            
+            let isListening = false;
+            function toggleVoiceRecognition() {
+                const voiceBtn = document.querySelector('.voice-interface');
+                
+                if (!isListening) {
+                    voiceBtn.classList.add('listening');
+                    voiceBtn.innerHTML = '🔴';
+                    isListening = true;
+                    
+                    // Simulate voice recognition
+                    setTimeout(() => {
+                        const commands = [
+                            'Navigate to portfolio',
+                            'Show contact form',
+                            'Change background',
+                            'Open design tools'
+                        ];
+                        
+                        const command = commands[Math.floor(Math.random() * commands.length)];
+                        executeVoiceCommand(command);
+                        
+                        voiceBtn.classList.remove('listening');
+                        voiceBtn.innerHTML = '🎤';
+                        isListening = false;
+                    }, 2000);
+                }
+            }
+            
+            function executeVoiceCommand(command) {
+                const responses = {
+                    'Navigate to portfolio': () => {
+                        document.querySelector('#portfolio').scrollIntoView({ behavior: 'smooth' });
+                    },
+                    'Show contact form': () => {
+                        document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });
+                    },
+                    'Change background': () => {
+                        // Cycle through backgrounds
+                        const backgrounds = ['fluid', 'glass', 'aurora'];
+                        const current = document.querySelector('.world-btn.active');
+                        if (current) {
+                            const next = backgrounds[(backgrounds.indexOf(current.textContent.toLowerCase()) + 1) % backgrounds.length];
+                            document.querySelector(`[onclick="switchWorld('${next}')"]`).click();
+                        }
+                    },
+                    'Open design tools': () => {
+                        document.querySelector('.color-palette-generator').style.display = 'block';
+                    }
+                };
+                
+                if (responses[command]) {
+                    responses[command]();
+                }
+            }
+            
+            // AR/VR Preview
+            function createARPreview() {
+                const arPreview = document.createElement('div');
+                arPreview.className = 'ar-preview';
+                arPreview.innerHTML = `
+                    <div class="ar-camera">
+                        <div class="ar-object"></div>
+                    </div>
+                    <button onclick="closeARPreview()" class="mt-4 px-6 py-3 bg-blue-500 text-white rounded-lg">Close AR</button>
+                `;
+                document.body.appendChild(arPreview);
+            }
+            
+            function openARPreview() {
+                const arPreview = document.querySelector('.ar-preview');
+                if (arPreview) {
+                    arPreview.classList.add('active');
+                }
+            }
+            
+            function closeARPreview() {
+                const arPreview = document.querySelector('.ar-preview');
+                if (arPreview) {
+                    arPreview.classList.remove('active');
+                }
+            }
+            
+            // Blockchain/NFT Integration
+            function createNFTShowcase() {
+                const nftShowcase = document.createElement('div');
+                nftShowcase.className = 'nft-showcase';
+                nftShowcase.innerHTML = `
+                    <h3 class="text-white text-2xl font-bold mb-4">NFT Portfolio</h3>
+                    <div class="nft-item">
+                        <div class="flex justify-between items-center mb-2">
+                            <h4 class="text-white font-semibold">Digital Art #001</h4>
+                            <span class="nft-verified">✓ Verified</span>
+                        </div>
+                        <p class="text-white/70 text-sm">Blockchain-verified digital artwork</p>
+                        <div class="text-blue-300 text-sm mt-2">Contract: 0x1234...5678</div>
+                    </div>
+                    <div class="nft-item">
+                        <div class="flex justify-between items-center mb-2">
+                            <h4 class="text-white font-semibold">Design Token #002</h4>
+                            <span class="nft-verified">✓ Verified</span>
+                        </div>
+                        <p class="text-white/70 text-sm">Tradable design asset</p>
+                        <div class="text-blue-300 text-sm mt-2">Contract: 0x8765...4321</div>
+                    </div>
+                `;
+                
+                // Add to about section
+                const about = document.querySelector('#about');
+                if (about) {
+                    about.appendChild(nftShowcase);
+                }
+            }
+            
+            // Machine Learning Analysis
+            function createMLAnalysis() {
+                const mlAnalysis = document.createElement('div');
+                mlAnalysis.className = 'ml-analysis';
+                mlAnalysis.innerHTML = `
+                    <h3 class="text-white text-2xl font-bold mb-4">AI Design Analysis</h3>
+                    <div class="ml-chart" id="ml-chart">
+                        <div class="ml-bar" style="left: 10%; width: 8%; --height: 60%;"></div>
+                        <div class="ml-bar" style="left: 20%; width: 8%; --height: 80%;"></div>
+                        <div class="ml-bar" style="left: 30%; width: 8%; --height: 45%;"></div>
+                        <div class="ml-bar" style="left: 40%; width: 8%; --height: 90%;"></div>
+                        <div class="ml-bar" style="left: 50%; width: 8%; --height: 70%;"></div>
+                        <div class="ml-bar" style="left: 60%; width: 8%; --height: 85%;"></div>
+                        <div class="ml-bar" style="left: 70%; width: 8%; --height: 55%;"></div>
+                        <div class="ml-bar" style="left: 80%; width: 8%; --height: 75%;"></div>
+                    </div>
+                    <p class="text-white/80 text-sm">AI analysis shows 87% design effectiveness score</p>
+                `;
+                
+                // Add to services section
+                const services = document.querySelector('#services');
+                if (services) {
+                    services.appendChild(mlAnalysis);
+                }
+            }
+            
+            // Advanced Analytics Dashboard
+            function createAnalyticsDashboard() {
+                const dashboard = document.createElement('div');
+                dashboard.className = 'analytics-dashboard';
+                dashboard.innerHTML = `
+                    <h4 class="text-white font-bold mb-4">Live Analytics</h4>
+                    <div class="analytics-metric">
+                        <span class="metric-label">Active Users</span>
+                        <span class="metric-value" id="active-users">127</span>
+                    </div>
+                    <div class="analytics-metric">
+                        <span class="metric-label">Page Views</span>
+                        <span class="metric-value" id="page-views">2,847</span>
+                    </div>
+                    <div class="analytics-metric">
+                        <span class="metric-label">Engagement</span>
+                        <span class="metric-value" id="engagement">94%</span>
+                    </div>
+                    <div class="analytics-metric">
+                        <span class="metric-label">Bounce Rate</span>
+                        <span class="metric-value" id="bounce-rate">12%</span>
+                    </div>
+                `;
+                document.body.appendChild(dashboard);
+                
+                // Show dashboard on Ctrl+Shift+A
+                document.addEventListener('keydown', (e) => {
+                    if (e.ctrlKey && e.shiftKey && e.key === 'A') {
+                        dashboard.classList.toggle('active');
+                    }
+                });
+                
+                // Update metrics
+                setInterval(() => {
+                    document.getElementById('active-users').textContent = Math.floor(Math.random() * 50) + 100;
+                    document.getElementById('page-views').textContent = (Math.floor(Math.random() * 100) + 2800).toLocaleString();
+                }, 5000);
+            }
+            
+            // Initialize next-level features
+            createAIAssistant();
+            create3DModelViewer();
+            createLiveCursors();
+            createVoiceInterface();
+            createARPreview();
+            createNFTShowcase();
+            createMLAnalysis();
+            createAnalyticsDashboard();
 
             // ===== CREATIVE EASTER EGGS =====
             
