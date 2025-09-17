@@ -1366,182 +1366,186 @@
     </section>
 
     <!-- High-Ticket Funnel Section -->
-    <section id="contact" class="ui-overlay pointer-events-auto py-24 px-6">
+    <section id="contact" class="py-24 px-6" style="background: var(--warm-cream);">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16">
-                <span class="inline-block px-4 py-2 bg-white/10 rounded-full text-sm font-medium text-white/90 mb-4">
-                    🚀 Ready to Scale?
+                <span class="inline-block px-6 py-3 rounded-full text-sm font-medium mb-4" style="background: var(--plum); color: white;">
+                    🌸 Join Our Story
                 </span>
-                <h3 class="text-4xl md:text-5xl font-bold text-white mb-6">
-                    Let's Build Something <span class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Extraordinary</span>
+                <h3 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--plum); font-family: 'Playfair Display', serif;">
+                    Connect with <span style="color: var(--clay);">BEPO</span>
                 </h3>
-                <p class="text-xl text-white/80 max-w-3xl mx-auto">
-                    Ready to transform your business with world-class design? Let's start with a free consultation to discuss your project.
+                <p class="text-xl max-w-3xl mx-auto" style="color: var(--blue);">
+                    Ready to carry your story with BEPO? Join our community of empowered women and discover products that connect you to your heritage and strength.
                 </p>
             </div>
             
             <div class="grid lg:grid-cols-2 gap-12">
-                <!-- Project Brief Form -->
-                <div class="glass-refined p-8 rounded-2xl">
-                    <h4 class="text-2xl font-bold text-white mb-6">Project Brief</h4>
-                    <p class="text-white/70 mb-6">Tell us about your project so we can provide the most relevant consultation.</p>
-                    <form id="project-brief-form" class="space-y-6">
+                <!-- BEPO Community Form -->
+                <div class="p-8 rounded-2xl shadow-2xl" style="background: rgba(245, 245, 220, 0.9); border: 2px solid var(--plum);">
+                    <h4 class="text-2xl font-bold mb-6" style="color: var(--plum);">Join Our Community</h4>
+                    <p class="mb-6" style="color: var(--blue);">Tell us about yourself and how BEPO can help you carry your story with strength and beauty.</p>
+                    <form id="bepo-community-form" class="space-y-6">
                         <div class="grid md:grid-cols-2 gap-6">
                             <input 
                                 type="text" 
-                                id="project-name"
+                                id="bepo-name"
                                 name="name" 
                                 placeholder="Your Name" 
                                 autocomplete="name"
                                 required
-                                class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent backdrop-blur-sm"
+                                class="w-full px-4 py-3 rounded-lg border-2 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent"
+                                style="border-color: var(--plum);"
                             >
                             <input 
                                 type="email" 
-                                id="project-email"
+                                id="bepo-email"
                                 name="email" 
                                 placeholder="Your Email" 
                                 autocomplete="email"
                                 required
-                                class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent backdrop-blur-sm"
+                                class="w-full px-4 py-3 rounded-lg border-2 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent"
+                                style="border-color: var(--plum);"
                             >
                         </div>
                         
                         <input 
                             type="text" 
-                            id="project-company"
-                            name="company" 
-                            placeholder="Company Name" 
-                            autocomplete="organization"
-                            class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent backdrop-blur-sm"
+                            id="bepo-location"
+                            name="location" 
+                            placeholder="Your Location" 
+                            autocomplete="off"
+                            class="w-full px-4 py-3 rounded-lg border-2 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent"
+                            style="border-color: var(--plum);"
                         >
                         
                         <select 
-                            id="project-type"
-                            name="project-type" 
+                            id="bepo-interest"
+                            name="interest" 
                             autocomplete="off"
                             required
-                            class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent backdrop-blur-sm"
+                            class="w-full px-4 py-3 rounded-lg border-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent"
+                            style="border-color: var(--plum);"
                         >
-                            <option value="" class="bg-gray-800">Project Type</option>
-                            <option value="branding" class="bg-gray-800">Brand Identity & Strategy</option>
-                            <option value="web-design" class="bg-gray-800">Web Design & Development</option>
-                            <option value="ui-ux" class="bg-gray-800">UI/UX Design</option>
-                            <option value="full-package" class="bg-gray-800">Full Brand Package</option>
-                            <option value="consultation" class="bg-gray-800">Design Consultation</option>
+                            <option value="">What interests you most?</option>
+                            <option value="rain-bags">Rain Bags Collection</option>
+                            <option value="bepo-home">Bepo Home Textiles</option>
+                            <option value="bepo-mood">Bepo Mood Accessories</option>
+                            <option value="bepo-gatherings">Bepo Gatherings Events</option>
+                            <option value="all-products">All BEPO Products</option>
                         </select>
                         
                         <select 
-                            id="project-budget"
-                            name="budget" 
+                            id="bepo-heritage"
+                            name="heritage" 
                             autocomplete="off"
-                            required
-                            class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent backdrop-blur-sm"
+                            class="w-full px-4 py-3 rounded-lg border-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent"
+                            style="border-color: var(--plum);"
                         >
-                            <option value="" class="bg-gray-800">Project Budget</option>
-                            <option value="5k-10k" class="bg-gray-800">$5,000 - $10,000</option>
-                            <option value="10k-25k" class="bg-gray-800">$10,000 - $25,000</option>
-                            <option value="25k-50k" class="bg-gray-800">$25,000 - $50,000</option>
-                            <option value="50k+" class="bg-gray-800">$50,000+</option>
-                            <option value="discuss" class="bg-gray-800">Let's Discuss</option>
-                        </select>
-                        
-                        <select 
-                            id="project-timeline"
-                            name="timeline" 
-                            autocomplete="off"
-                            required
-                            class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent backdrop-blur-sm"
-                        >
-                            <option value="" class="bg-gray-800">Project Timeline</option>
-                            <option value="asap" class="bg-gray-800">ASAP (Rush Project)</option>
-                            <option value="1-month" class="bg-gray-800">Within 1 Month</option>
-                            <option value="3-months" class="bg-gray-800">Within 3 Months</option>
-                            <option value="6-months" class="bg-gray-800">Within 6 Months</option>
-                            <option value="flexible" class="bg-gray-800">Flexible Timeline</option>
+                            <option value="">Your Cultural Background (Optional)</option>
+                            <option value="georgian">Georgian</option>
+                            <option value="eastern-european">Eastern European</option>
+                            <option value="mediterranean">Mediterranean</option>
+                            <option value="other">Other</option>
+                            <option value="prefer-not-to-say">Prefer not to say</option>
                         </select>
                         
                         <textarea 
-                            id="project-details"
-                            name="project-details" 
-                            placeholder="Tell us about your project goals, target audience, and any specific requirements..." 
+                            id="bepo-story"
+                            name="story" 
+                            placeholder="Tell us your story - what heritage, strength, or community means to you..." 
                             autocomplete="off"
                             rows="4" 
-                            class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent backdrop-blur-sm resize-none"
+                            class="w-full px-4 py-3 rounded-lg border-2 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent resize-none"
+                            style="border-color: var(--plum);"
                         ></textarea>
                         
                         <button 
                             type="submit" 
-                            class="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-6 py-3 rounded-lg font-bold transition-all duration-300 hover:scale-105 hover:shadow-2xl btn-refined focus-ring"
+                            class="w-full px-6 py-3 rounded-lg font-bold transition-all duration-300 hover:scale-105 shadow-lg"
+                            style="background: var(--plum); color: white; box-shadow: 0 4px 15px rgba(107, 44, 145, 0.3);"
                         >
-                            Book Free Consultation
+                            Join BEPO Community
                         </button>
                     </form>
                 </div>
                 
-                <!-- Contact Info & Next Steps -->
+                <!-- BEPO Community Info -->
                 <div class="space-y-8">
                     <!-- What Happens Next -->
-                    <div class="glass-refined p-8 rounded-2xl">
-                        <h4 class="text-2xl font-bold text-white mb-6">What Happens Next?</h4>
+                    <div class="p-8 rounded-2xl shadow-2xl" style="background: rgba(245, 245, 220, 0.9); border: 2px solid var(--clay);">
+                        <h4 class="text-2xl font-bold mb-6" style="color: var(--plum);">Join Our Journey</h4>
                         <div class="space-y-6">
                             <div class="flex items-start gap-4">
-                                <div class="w-8 h-8 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-1" style="background: var(--plum);">
                                     <span class="text-white font-bold text-sm">1</span>
                                 </div>
                                 <div>
-                                    <h5 class="text-white font-semibold mb-2">Free 15-Minute Discovery Call</h5>
-                                    <p class="text-white/70 text-sm">We'll review your brief and discuss your project goals, timeline, and budget.</p>
+                                    <h5 class="font-semibold mb-2" style="color: var(--plum);">Welcome to BEPO</h5>
+                                    <p class="text-sm" style="color: var(--blue);">We'll send you our heritage stories and introduce you to our community of empowered women.</p>
                                 </div>
                             </div>
                             
                             <div class="flex items-start gap-4">
-                                <div class="w-8 h-8 bg-gradient-to-br from-green-400 to-teal-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-1" style="background: var(--clay);">
                                     <span class="text-white font-bold text-sm">2</span>
                                 </div>
                                 <div>
-                                    <h5 class="text-white font-semibold mb-2">Custom Proposal</h5>
-                                    <p class="text-white/70 text-sm">We'll create a detailed proposal with timeline, deliverables, and investment options.</p>
+                                    <h5 class="font-semibold mb-2" style="color: var(--plum);">Discover Your Story</h5>
+                                    <p class="text-sm" style="color: var(--blue);">Explore our Rain Bags, home textiles, and accessories that connect you to your heritage and strength.</p>
                                 </div>
                             </div>
                             
                             <div class="flex items-start gap-4">
-                                <div class="w-8 h-8 bg-gradient-to-br from-pink-400 to-rose-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-1" style="background: var(--blue);">
                                     <span class="text-white font-bold text-sm">3</span>
                                 </div>
                                 <div>
-                                    <h5 class="text-white font-semibold mb-2">Project Kickoff</h5>
-                                    <p class="text-white/70 text-sm">Once approved, we'll start your project with a comprehensive strategy session.</p>
+                                    <h5 class="font-semibold mb-2" style="color: var(--plum);">Join Bepo Gatherings</h5>
+                                    <p class="text-sm" style="color: var(--blue);">Participate in workshops and events focused on women's empowerment and cultural storytelling.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Contact Info -->
-                    <div class="glass-refined p-8 rounded-2xl">
-                        <h4 class="text-2xl font-bold text-white mb-6">Direct Contact</h4>
+                    <!-- BEPO Contact Info -->
+                    <div class="p-8 rounded-2xl shadow-2xl" style="background: rgba(245, 245, 220, 0.9); border: 2px solid var(--blue);">
+                        <h4 class="text-2xl font-bold mb-6" style="color: var(--plum);">Connect with BEPO</h4>
                         <div class="space-y-6">
                             <div class="flex items-center gap-4">
-                                <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center">
+                                <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background: var(--plum);">
                                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                                     </svg>
                                 </div>
                                 <div>
-                                    <h5 class="text-white font-semibold">Email</h5>
-                                    <p class="text-white/70">hello@tasodesign.com</p>
+                                    <h5 class="font-semibold" style="color: var(--plum);">Email</h5>
+                                    <p class="text-sm" style="color: var(--blue);">hello@bepo.com</p>
                                 </div>
                             </div>
                             
                             <div class="flex items-center gap-4">
-                                <div class="w-12 h-12 bg-gradient-to-br from-green-400 to-teal-500 rounded-full flex items-center justify-center">
+                                <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background: var(--clay);">
                                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
                                     </svg>
                                 </div>
                                 <div>
-                                    <h5 class="text-white font-semibold">Phone</h5>
-                                    <p class="text-white/70">+1 (555) 123-4567</p>
+                                    <h5 class="font-semibold" style="color: var(--plum);">Phone</h5>
+                                    <p class="text-sm" style="color: var(--blue);">(+995) 551531289</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background: var(--blue);">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold" style="color: var(--plum);">Location</h5>
+                                    <p class="text-sm" style="color: var(--blue);">Tbilisi, Georgia</p>
                                 </div>
                             </div>
                         </div>
