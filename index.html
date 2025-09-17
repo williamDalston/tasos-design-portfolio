@@ -62,7 +62,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="ui-overlay pointer-events-auto flex items-center justify-center min-h-screen p-6">
+    <section id="hero" class="ui-overlay pointer-events-auto flex items-center justify-center min-h-screen p-6">
         <div class="text-center max-w-5xl mx-auto">
             <div class="glass-refined p-8 md:p-16 rounded-3xl shadow-2xl mb-8 relative overflow-hidden refined-hover breathing">
                 <!-- Animated background elements -->
@@ -96,7 +96,7 @@
                         We craft extraordinary digital experiences that tell your story and captivate your audience.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                        <button class="group bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-10 py-4 rounded-full font-bold text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl shadow-lg btn-refined focus-ring glow-subtle ripple-effect btn-morph magnetic-btn shimmer">
+                        <button class="group bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-10 py-4 rounded-full font-bold text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl shadow-lg btn-refined focus-ring glow-subtle ripple-effect btn-morph magnetic-btn shimmer interactive-element hover-lift" data-tooltip="Explore Taso's creative portfolio">
                             <span class="flex items-center gap-3">
                                 View Portfolio
                                 <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform liquid-morph morphing-shape icon-rotate" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -104,7 +104,7 @@
                                 </svg>
                             </span>
                         </button>
-                        <button class="group border-2 border-white/40 hover:border-white/60 text-white px-10 py-4 rounded-full font-bold text-lg transition-all duration-300 hover:scale-105 hover:bg-white/10 btn-refined focus-ring ripple-effect btn-morph magnetic-btn liquid-transition">
+                        <button class="group border-2 border-white/40 hover:border-white/60 text-white px-10 py-4 rounded-full font-bold text-lg transition-all duration-300 hover:scale-105 hover:bg-white/10 btn-refined focus-ring ripple-effect btn-morph magnetic-btn liquid-transition interactive-element hover-lift" data-tooltip="Start your design journey with Taso">
                             <span class="flex items-center gap-3">
                                 Start a Project
                                 <svg class="w-5 h-5 group-hover:rotate-12 transition-transform liquid-morph morphing-shape icon-rotate" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -112,7 +112,7 @@
                                 </svg>
                             </span>
                         </button>
-                        <button onclick="openARPreview()" class="group border-2 border-purple-400/40 hover:border-purple-400/60 text-purple-300 px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 hover:scale-105 hover:bg-purple-500/10 btn-refined focus-ring ripple-effect btn-morph magnetic-btn">
+                        <button onclick="openARPreview()" class="group border-2 border-purple-400/40 hover:border-purple-400/60 text-purple-300 px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 hover:scale-105 hover:bg-purple-500/10 btn-refined focus-ring ripple-effect btn-morph magnetic-btn interactive-element hover-lift tooltip" data-tooltip="Experience designs in augmented reality">
                             <span class="flex items-center gap-3">
                                 🥽 AR Preview
                                 <svg class="w-5 h-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -2860,6 +2860,301 @@
             createNFTShowcase();
             createMLAnalysis();
             createAnalyticsDashboard();
+
+            // ===== UX/UI ENHANCEMENTS =====
+            
+            // Scroll Indicators
+            function createScrollIndicators() {
+                const sections = ['hero', 'portfolio', 'services', 'about', 'contact'];
+                const indicator = document.createElement('div');
+                indicator.className = 'scroll-indicator';
+                
+                sections.forEach((section, index) => {
+                    const dot = document.createElement('div');
+                    dot.className = 'scroll-dot';
+                    dot.setAttribute('data-section', section);
+                    dot.addEventListener('click', () => {
+                        const target = document.getElementById(section);
+                        if (target) {
+                            target.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    });
+                    indicator.appendChild(dot);
+                });
+                
+                document.body.appendChild(indicator);
+                
+                // Update active dot on scroll
+                window.addEventListener('scroll', () => {
+                    const scrollPos = window.scrollY + 100;
+                    sections.forEach((section, index) => {
+                        const element = document.getElementById(section);
+                        const dot = indicator.children[index];
+                        if (element) {
+                            const top = element.offsetTop;
+                            const bottom = top + element.offsetHeight;
+                            
+                            if (scrollPos >= top && scrollPos <= bottom) {
+                                dot.classList.add('active');
+                            } else {
+                                dot.classList.remove('active');
+                            }
+                        }
+                    });
+                });
+            }
+            
+            // Notification System
+            function showNotification(message, type = 'info', duration = 3000) {
+                const notification = document.createElement('div');
+                notification.className = `notification ${type}`;
+                notification.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <div class="w-2 h-2 rounded-full bg-${type === 'success' ? 'green' : type === 'error' ? 'red' : 'blue'}-500"></div>
+                        <span>${message}</span>
+                    </div>
+                `;
+                document.body.appendChild(notification);
+                
+                setTimeout(() => notification.classList.add('show'), 100);
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                    setTimeout(() => notification.remove(), 300);
+                }, duration);
+            }
+            
+            // Enhanced Form Validation
+            function enhanceFormValidation() {
+                const forms = document.querySelectorAll('form');
+                forms.forEach(form => {
+                    const inputs = form.querySelectorAll('input, textarea, select');
+                    
+                    inputs.forEach(input => {
+                        // Real-time validation
+                        input.addEventListener('blur', () => validateField(input));
+                        input.addEventListener('input', () => clearFieldError(input));
+                    });
+                    
+                    form.addEventListener('submit', (e) => {
+                        e.preventDefault();
+                        let isValid = true;
+                        
+                        inputs.forEach(input => {
+                            if (!validateField(input)) {
+                                isValid = false;
+                            }
+                        });
+                        
+                        if (isValid) {
+                            showNotification('Form submitted successfully!', 'success');
+                            form.reset();
+                        } else {
+                            showNotification('Please fix the errors above', 'error');
+                        }
+                    });
+                });
+            }
+            
+            function validateField(field) {
+                const value = field.value.trim();
+                const type = field.type;
+                const required = field.hasAttribute('required');
+                
+                clearFieldError(field);
+                
+                if (required && !value) {
+                    showFieldError(field, 'This field is required');
+                    return false;
+                }
+                
+                if (type === 'email' && value && !isValidEmail(value)) {
+                    showFieldError(field, 'Please enter a valid email');
+                    return false;
+                }
+                
+                if (type === 'tel' && value && !isValidPhone(value)) {
+                    showFieldError(field, 'Please enter a valid phone number');
+                    return false;
+                }
+                
+                showFieldSuccess(field);
+                return true;
+            }
+            
+            function showFieldError(field, message) {
+                field.classList.add('error-state');
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'error-message';
+                errorDiv.textContent = message;
+                field.parentNode.appendChild(errorDiv);
+            }
+            
+            function showFieldSuccess(field) {
+                field.classList.add('success-state');
+                field.classList.remove('error-state');
+            }
+            
+            function clearFieldError(field) {
+                field.classList.remove('error-state', 'success-state');
+                const errorMsg = field.parentNode.querySelector('.error-message');
+                if (errorMsg) errorMsg.remove();
+            }
+            
+            function isValidEmail(email) {
+                return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+            }
+            
+            function isValidPhone(phone) {
+                return /^[\+]?[1-9][\d]{0,15}$/.test(phone.replace(/\s/g, ''));
+            }
+            
+            // Enhanced Loading States
+            function addLoadingStates() {
+                const buttons = document.querySelectorAll('button[type="submit"], .btn-primary');
+                buttons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        if (this.type === 'submit') {
+                            const originalText = this.innerHTML;
+                            this.innerHTML = '<div class="spinner"></div> Processing...';
+                            this.disabled = true;
+                            
+                            setTimeout(() => {
+                                this.innerHTML = originalText;
+                                this.disabled = false;
+                            }, 2000);
+                        }
+                    });
+                });
+            }
+            
+            // Keyboard Navigation
+            function enhanceKeyboardNavigation() {
+                document.addEventListener('keydown', (e) => {
+                    // Escape key to close modals
+                    if (e.key === 'Escape') {
+                        const modals = document.querySelectorAll('.project-modal, .ar-preview');
+                        modals.forEach(modal => {
+                            if (modal.classList.contains('active')) {
+                                modal.classList.remove('active');
+                            }
+                        });
+                    }
+                    
+                    // Tab navigation enhancement
+                    if (e.key === 'Tab') {
+                        const focusableElements = document.querySelectorAll(
+                            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+                        );
+                        const firstElement = focusableElements[0];
+                        const lastElement = focusableElements[focusableElements.length - 1];
+                        
+                        if (e.shiftKey && document.activeElement === firstElement) {
+                            e.preventDefault();
+                            lastElement.focus();
+                        } else if (!e.shiftKey && document.activeElement === lastElement) {
+                            e.preventDefault();
+                            firstElement.focus();
+                        }
+                    }
+                });
+            }
+            
+            // Performance Monitoring
+            function addPerformanceMonitoring() {
+                // Monitor page load time
+                window.addEventListener('load', () => {
+                    const loadTime = performance.now();
+                    if (loadTime > 3000) {
+                        console.warn('Page load time is slow:', loadTime + 'ms');
+                    }
+                });
+                
+                // Monitor scroll performance
+                let scrollTimeout;
+                window.addEventListener('scroll', () => {
+                    clearTimeout(scrollTimeout);
+                    scrollTimeout = setTimeout(() => {
+                        // Throttle scroll events for better performance
+                    }, 16);
+                });
+            }
+            
+            // Accessibility Enhancements
+            function enhanceAccessibility() {
+                // Add ARIA labels to interactive elements
+                const buttons = document.querySelectorAll('button:not([aria-label])');
+                buttons.forEach(button => {
+                    if (!button.textContent.trim()) {
+                        button.setAttribute('aria-label', 'Interactive button');
+                    }
+                });
+                
+                // Add skip links
+                const skipLink = document.createElement('a');
+                skipLink.href = '#main-content';
+                skipLink.textContent = 'Skip to main content';
+                skipLink.className = 'sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-500 text-white px-4 py-2 rounded z-50';
+                document.body.insertBefore(skipLink, document.body.firstChild);
+                
+                // Add main content ID
+                const mainContent = document.querySelector('main') || document.querySelector('#hero');
+                if (mainContent) {
+                    mainContent.id = 'main-content';
+                }
+            }
+            
+            // Smooth Scrolling Enhancement
+            function enhanceSmoothScrolling() {
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const target = document.querySelector(this.getAttribute('href'));
+                        if (target) {
+                            const offsetTop = target.offsetTop - 80;
+                            window.scrollTo({
+                                top: offsetTop,
+                                behavior: 'smooth'
+                            });
+                            
+                            // Update URL without jumping
+                            history.pushState(null, null, this.getAttribute('href'));
+                        }
+                    });
+                });
+            }
+            
+            // Initialize UX/UI enhancements
+            createScrollIndicators();
+            enhanceFormValidation();
+            addLoadingStates();
+            enhanceKeyboardNavigation();
+            addPerformanceMonitoring();
+            enhanceAccessibility();
+            enhanceSmoothScrolling();
+            
+            // Show welcome notification
+            setTimeout(() => {
+                showNotification('Welcome to Taso\'s portfolio! 🎨', 'success', 2000);
+            }, 1000);
+            
+            // Add subtle animations to elements
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in-up');
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe all sections for fade-in animation
+            document.querySelectorAll('section').forEach(section => {
+                observer.observe(section);
+            });
 
             // ===== CREATIVE EASTER EGGS =====
             
