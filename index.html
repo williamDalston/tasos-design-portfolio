@@ -11,6 +11,92 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <link rel="stylesheet" href="css/styles.css">
+    
+    <style>
+        /* AI Assistant Styling */
+        .ai-assistant {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 16px;
+            max-width: 300px;
+            z-index: 1000;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+        
+        .ai-assistant.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .ai-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+        
+        .minimize-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+        
+        .minimize-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .ai-content {
+            display: block;
+        }
+        
+        .ai-suggestions {
+            margin-bottom: 12px;
+        }
+        
+        .ai-suggestion {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 8px 12px;
+            margin: 4px 0;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.2s ease;
+        }
+        
+        .ai-suggestion:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .ai-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+        }
+        
+        .ai-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+    </style>
 </head>
 <body>
     <!-- Loading Animation -->
@@ -2604,12 +2690,12 @@
                 document.body.appendChild(showcase);
             }
             
-            // Initialize advanced effects
-            createParticleSystem();
-            createCodeRain();
-            createMusicVisualizer();
-            createColorPaletteGenerator();
-            createTypographyShowcase();
+            // Initialize advanced effects (reduced for better usability)
+            // createParticleSystem(); // Disabled - too distracting
+            // createCodeRain(); // Disabled - too distracting
+            // createMusicVisualizer(); // Disabled - too distracting
+            // createColorPaletteGenerator(); // Disabled - too distracting
+            // createTypographyShowcase(); // Disabled - too distracting
 
             // ===== NEXT-LEVEL FEATURES =====
             
@@ -2668,26 +2754,43 @@
                     <div class="ai-header">
                         <div class="ai-avatar">🤖</div>
                         <h4 class="text-white font-bold">AI Design Assistant</h4>
+                        <button id="minimize-ai" class="minimize-btn" onclick="toggleAIAssistant()">−</button>
                     </div>
-                    <div class="ai-suggestions" id="ai-suggestions">
-                        <div class="ai-suggestion" onclick="applyAISuggestion('color')">
-                            💡 Try a warmer color palette
+                    <div class="ai-content" id="ai-content">
+                        <div class="ai-suggestions" id="ai-suggestions">
+                            <div class="ai-suggestion" onclick="applyAISuggestion('color')">
+                                💡 Try a warmer color palette
+                            </div>
+                            <div class="ai-suggestion" onclick="applyAISuggestion('typography')">
+                                ✨ Increase font contrast
+                            </div>
+                            <div class="ai-suggestion" onclick="applyAISuggestion('spacing')">
+                                📐 Add more white space
+                            </div>
                         </div>
-                        <div class="ai-suggestion" onclick="applyAISuggestion('typography')">
-                            ✨ Increase font contrast
-                        </div>
-                        <div class="ai-suggestion" onclick="applyAISuggestion('spacing')">
-                            📐 Add more white space
-                        </div>
+                        <input type="text" id="ai-input" name="ai-input" class="ai-input" placeholder="Ask me about design..." autocomplete="off" onkeypress="handleAIInput(event)">
                     </div>
-                    <input type="text" id="ai-input" name="ai-input" class="ai-input" placeholder="Ask me about design..." autocomplete="off" onkeypress="handleAIInput(event)">
                 `;
                 document.body.appendChild(assistant);
                 
-                // Show assistant after 3 seconds
+                // Show assistant after 5 seconds (delayed)
                 setTimeout(() => {
                     assistant.classList.add('active');
-                }, 3000);
+                }, 5000);
+            }
+            
+            function toggleAIAssistant() {
+                const assistant = document.querySelector('.ai-assistant');
+                const content = document.getElementById('ai-content');
+                const minimizeBtn = document.getElementById('minimize-ai');
+                
+                if (content.style.display === 'none') {
+                    content.style.display = 'block';
+                    minimizeBtn.textContent = '−';
+                } else {
+                    content.style.display = 'none';
+                    minimizeBtn.textContent = '+';
+                }
             }
             
             // 3D Model Viewer
@@ -2914,13 +3017,13 @@
                 }, 5000);
             }
             
-            // Initialize next-level features
+            // Initialize next-level features (reduced for better usability)
             createAIAssistant();
-            create3DModelViewer();
-            createLiveCursors();
-            createVoiceInterface();
-            createARPreview();
-            createNFTShowcase();
+            // create3DModelViewer(); // Disabled - too distracting
+            // createLiveCursors(); // Disabled - too distracting
+            // createVoiceInterface(); // Disabled - too distracting
+            // createARPreview(); // Disabled - too distracting
+            // createNFTShowcase(); // Disabled - too distracting
             createMLAnalysis();
             createAnalyticsDashboard();
 
@@ -3368,10 +3471,10 @@
             });
 
             function updateCursorTrails() {
-                trailX += (trailMouseX - trailX) * 0.1;
-                trailY += (trailMouseY - trailY) * 0.1;
-                trail2X += (trailMouseX - trail2X) * 0.05;
-                trail2Y += (trailMouseY - trail2Y) * 0.05;
+                trailX += (trailMouseX - trailX) * 0.05; // Slower, less distracting
+                trailY += (trailMouseY - trailY) * 0.05;
+                trail2X += (trailMouseX - trail2X) * 0.025;
+                trail2Y += (trailMouseY - trail2Y) * 0.025;
 
                 const trail = document.querySelector('.cursor-trail');
                 const trail2 = document.querySelector('.cursor-trail-2');
@@ -3467,8 +3570,8 @@
                 requestAnimationFrame(updateParticles);
             }
             
-            // Start particle system
-            setInterval(createAdvancedParticle, 200);
+            // Start particle system (reduced frequency)
+            setInterval(createAdvancedParticle, 1000);
             updateParticles();
 
             // Code Rain Effect (Advanced)
@@ -3486,7 +3589,7 @@
                 }, 5000);
             }
 
-            setInterval(createAdvancedCodeRain, 100);
+            setInterval(createAdvancedCodeRain, 500);
 
             // Music Visualizer (Simulated)
             function animateMusicVisualizer() {
@@ -3692,7 +3795,7 @@
                 }, 3000);
             }
 
-            setInterval(createMagneticField, 4000);
+            setInterval(createMagneticField, 8000);
 
             // Enhanced Advanced Scroll Effects
             let advancedScrollTicking = false;
