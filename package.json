@@ -1,16 +1,44 @@
 {
-  "name": "tasos-design",
+  "name": "bepo-design",
   "version": "1.0.0",
-  "description": "Interactive Three.js design showcase with modular architecture",
+  "description": "BEPO - Heritage Lifestyle Brand Website",
   "main": "index.html",
   "scripts": {
-    "start": "python -m http.server 8000",
-    "serve": "npx http-server -p 8000 -o"
+    "dev": "python3 -m http.server 8080",
+    "build": "npm run build:css && npm run build:js && npm run build:images",
+    "build:css": "tailwindcss -i ./src/input.css -o ./css/styles.css --minify",
+    "build:js": "terser js/*.js -o js/bundle.min.js --compress --mangle",
+    "build:images": "npm run optimize:images",
+    "optimize:images": "magick assets/taso1.jpg -quality 85 -resize 1920x1080^ -gravity center -extent 1920x1080 assets/taso1.jpg && magick assets/headshot.png -quality 90 -resize 800x800^ -gravity center -extent 800x800 assets/headshot.png",
+    "lighthouse": "lighthouse http://localhost:8080 --output html --output-path ./lighthouse-report.html",
+    "test:performance": "npm run dev & sleep 5 && npm run lighthouse && pkill -f 'python3 -m http.server'",
+    "deploy": "npm run build && git add . && git commit -m 'Production build' && git push origin main"
   },
-  "keywords": ["three.js", "webgl", "shaders", "interactive", "design"],
-  "author": "Taso",
-  "license": "MIT"
+  "keywords": [
+    "heritage",
+    "lifestyle",
+    "brand",
+    "georgian",
+    "design",
+    "women-empowerment",
+    "e-commerce"
+  ],
+  "author": "Tamar Tsiklauri",
+  "license": "MIT",
+  "devDependencies": {
+    "tailwindcss": "^3.4.0",
+    "terser": "^5.24.0",
+    "lighthouse": "^11.4.0"
+  },
+  "dependencies": {
+    "three": "^0.158.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bepo-design/bepo-website.git"
+  },
+  "homepage": "https://bepo-design.com",
+  "engines": {
+    "node": ">=18.0.0"
+  }
 }
-
-
-

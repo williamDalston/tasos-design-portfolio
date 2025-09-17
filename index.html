@@ -6,7 +6,172 @@
     <title>BEPO - Carry Your Story | Heritage Lifestyle Brand</title>
     <meta name="description" content="BEPO creates everyday objects that offer protection, beauty, and connect women to their heritage, stories, and strength. Founded by Tamar Tsiklauri.">
     <meta name="keywords" content="BEPO, heritage lifestyle brand, rain bags, Georgian design, women empowerment, storytelling, Tamar Tsiklauri, community building">
+    <link rel="canonical" href="https://bepo-design.com/">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bepo-design.com/">
+    <meta property="og:title" content="BEPO - Carry Your Story | Heritage Lifestyle Brand">
+    <meta property="og:description" content="BEPO creates everyday objects that offer protection, beauty, and connect women to their heritage, stories, and strength. Founded by Tamar Tsiklauri.">
+    <meta property="og:image" content="https://bepo-design.com/assets/taso1.jpg">
+    <meta property="og:site_name" content="BEPO">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://bepo-design.com/">
+    <meta property="twitter:title" content="BEPO - Carry Your Story | Heritage Lifestyle Brand">
+    <meta property="twitter:description" content="BEPO creates everyday objects that offer protection, beauty, and connect women to their heritage, stories, and strength. Founded by Tamar Tsiklauri.">
+    <meta property="twitter:image" content="https://bepo-design.com/assets/taso1.jpg">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "BEPO",
+        "description": "Heritage lifestyle brand creating everyday objects that offer protection, beauty, and connect women to their heritage, stories, and strength.",
+        "url": "https://bepo-design.com",
+        "logo": "https://bepo-design.com/assets/logo.png",
+        "founder": {
+            "@type": "Person",
+            "name": "Tamar Tsiklauri",
+            "jobTitle": "Founder & Creative Director",
+            "description": "Georgian designer and entrepreneur passionate about women's empowerment and cultural heritage."
+        },
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "Georgia",
+            "addressLocality": "Tbilisi"
+        },
+        "sameAs": [
+            "https://instagram.com/bepo_design",
+            "https://facebook.com/bepo.design"
+        ]
+    }
+    </script>
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID', {
+            page_title: 'BEPO - Carry Your Story',
+            page_location: window.location.href,
+            custom_map: {
+                'custom_parameter_1': 'heritage_brand',
+                'custom_parameter_2': 'women_empowerment'
+            }
+        });
+        
+        // Core Web Vitals tracking
+        function sendToAnalytics(metric) {
+            gtag('event', metric.name, {
+                event_category: 'Web Vitals',
+                event_label: metric.id,
+                value: Math.round(metric.name === 'CLS' ? metric.value * 1000 : metric.value),
+                non_interaction: true,
+            });
+        }
+        
+        // LCP tracking
+        new PerformanceObserver((entryList) => {
+            for (const entry of entryList.getEntries()) {
+                if (entry.entryType === 'largest-contentful-paint') {
+                    sendToAnalytics({
+                        name: 'LCP',
+                        value: entry.startTime,
+                        id: entry.id
+                    });
+                }
+            }
+        }).observe({entryTypes: ['largest-contentful-paint']});
+        
+        // FID tracking
+        new PerformanceObserver((entryList) => {
+            for (const entry of entryList.getEntries()) {
+                sendToAnalytics({
+                    name: 'FID',
+                    value: entry.processingStart - entry.startTime,
+                    id: entry.id
+                });
+            }
+        }).observe({entryTypes: ['first-input']});
+        
+        // CLS tracking
+        let clsValue = 0;
+        new PerformanceObserver((entryList) => {
+            for (const entry of entryList.getEntries()) {
+                if (!entry.hadRecentInput) {
+                    clsValue += entry.value;
+                    sendToAnalytics({
+                        name: 'CLS',
+                        value: clsValue,
+                        id: entry.id
+                    });
+                }
+            }
+        }).observe({entryTypes: ['layout-shift']});
+    </script>
+    
+    <!-- Performance Monitoring -->
+    <script>
+        // Track page load performance
+        window.addEventListener('load', function() {
+            const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+            gtag('event', 'page_load_time', {
+                event_category: 'Performance',
+                value: loadTime,
+                non_interaction: true
+            });
+        });
+        
+        // Track user engagement
+        let engagementStart = Date.now();
+        let maxScrollDepth = 0;
+        
+        window.addEventListener('scroll', function() {
+            const scrollDepth = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+            maxScrollDepth = Math.max(maxScrollDepth, scrollDepth);
+        });
+        
+        window.addEventListener('beforeunload', function() {
+            const engagementTime = Date.now() - engagementStart;
+            gtag('event', 'user_engagement', {
+                event_category: 'Engagement',
+                value: engagementTime,
+                custom_parameter_1: maxScrollDepth
+            });
+        });
+        
+        // Track CTA clicks
+        document.addEventListener('click', function(e) {
+            if (e.target.matches('.btn-primary, .btn-secondary, [data-cta]')) {
+                gtag('event', 'cta_click', {
+                    event_category: 'Conversion',
+                    event_label: e.target.textContent.trim(),
+                    value: 1
+                });
+            }
+        });
+    </script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(function(registration) {
+                        console.log('BEPO Service Worker: Registration successful', registration.scope);
+                    })
+                    .catch(function(error) {
+                        console.log('BEPO Service Worker: Registration failed', error);
+                    });
+            });
+        }
+    </script>
     
     <!-- Google Fonts - Preload for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1314,14 +1479,14 @@
                     
                     <!-- Call to Action Buttons - Optimized for Conversion -->
                     <nav class="flex flex-col lg:flex-row gap-4 justify-center items-center" style="margin-bottom: var(--space-20);" aria-label="Main actions">
-                        <button id="open-configurator" class="btn-georgian magnetic-element ripple-effect transform hover:scale-105 transition-all duration-300 shadow-xl" style="font-size: var(--text-xl); padding: var(--space-6) var(--space-12); min-width: 280px; font-weight: 700;" aria-describedby="rain-bags-description">
+                        <button id="open-configurator" class="btn-georgian magnetic-element ripple-effect transform hover:scale-105 transition-all duration-300 shadow-xl" style="font-size: var(--text-xl); padding: var(--space-6) var(--space-12); min-width: 280px; font-weight: 700;" aria-describedby="rain-bags-description" data-cta="3d-configurator">
                             🎨 3D Configurator
                         </button>
                         <div class="flex flex-col sm:flex-row gap-4">
-                            <button id="open-heritage-generator" class="btn-georgian-secondary magnetic-element ripple-effect transform hover:scale-105 transition-all duration-300 shadow-lg" style="font-size: var(--text-lg); padding: var(--space-5) var(--space-8); min-width: 200px;" aria-describedby="stories-description">
+                            <button id="open-heritage-generator" class="btn-georgian-secondary magnetic-element ripple-effect transform hover:scale-105 transition-all duration-300 shadow-lg" style="font-size: var(--text-lg); padding: var(--space-5) var(--space-8); min-width: 200px;" aria-describedby="stories-description" data-cta="heritage-mark">
                                 ✨ Create Heritage Mark
                             </button>
-                            <button id="open-project-brief" class="btn-georgian-secondary magnetic-element ripple-effect transform hover:scale-105 transition-all duration-300 shadow-lg" style="font-size: var(--text-lg); padding: var(--space-5) var(--space-8); border-color: var(--clay); color: var(--clay); min-width: 200px;">
+                            <button id="open-project-brief" class="btn-georgian-secondary magnetic-element ripple-effect transform hover:scale-105 transition-all duration-300 shadow-lg" style="font-size: var(--text-lg); padding: var(--space-5) var(--space-8); border-color: var(--clay); color: var(--clay); min-width: 200px;" data-cta="project-brief">
                                 📋 Smart Project Brief
                             </button>
                         </div>
@@ -2118,9 +2283,9 @@
                         <div class="font-body-medium text-sm" style="color: var(--clay);">✓ Story Cards Included</div>
                     </div>
                     <div class="font-body-semibold mb-4" style="font-size: var(--text-lg); color: var(--plum);">Starting at $89</div>
-                    <button class="btn-primary w-full" style="font-size: var(--text-sm); padding: var(--space-3) var(--space-6);">
-                        Explore Collection
-                    </button>
+                        <button class="btn-primary w-full" style="font-size: var(--text-sm); padding: var(--space-3) var(--space-6);" data-cta="rain-bags-explore">
+                            Explore Collection
+                        </button>
                 </article>
 
                 <!-- Bepo Home -->
@@ -2138,9 +2303,9 @@
                         <div class="font-body-medium text-sm" style="color: var(--clay);">✓ Cushions & Pillows</div>
                     </div>
                     <div class="font-body-semibold mb-4" style="font-size: var(--text-lg); color: var(--clay);">Coming Soon</div>
-                    <button class="btn-secondary w-full" style="font-size: var(--text-sm); padding: var(--space-3) var(--space-6); background: var(--clay); border-color: var(--clay);">
-                        Join Waitlist
-                    </button>
+                        <button class="btn-secondary w-full" style="font-size: var(--text-sm); padding: var(--space-3) var(--space-6); background: var(--clay); border-color: var(--clay);" data-cta="bepo-home-waitlist">
+                            Join Waitlist
+                        </button>
                 </article>
 
                 <!-- Bepo Mood -->
@@ -3535,7 +3700,7 @@
     <!-- ===== COMPREHENSIVE BRAND EXPERIENCE ===== -->
     
     <!-- 3D Product Configurator Modal -->
-    <div id="configurator-modal" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden flex items-center justify-center">
+        <div id="configurator-modal" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden items-center justify-center">
         <div class="bg-white rounded-3xl p-8 max-w-6xl w-full mx-4 max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center mb-6">
                 <h2 class="text-3xl font-bold" style="color: var(--plum);">Rain Bag 3D Configurator</h2>
@@ -3629,7 +3794,7 @@
     </div>
 
     <!-- Personal Heritage Mark Generator -->
-    <div id="heritage-generator" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden flex items-center justify-center">
+    <div id="heritage-generator" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden items-center justify-center">
         <div class="bg-white rounded-3xl p-8 max-w-4xl w-full mx-4">
             <div class="flex justify-between items-center mb-6">
                 <h2 class="text-3xl font-bold" style="color: var(--plum);">Create Your Personal Heritage Mark</h2>
@@ -3689,7 +3854,7 @@
     </div>
 
     <!-- Smart Project Brief Modal -->
-    <div id="project-brief-modal" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden flex items-center justify-center">
+    <div id="project-brief-modal" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden items-center justify-center">
         <div class="bg-white rounded-3xl p-8 max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center mb-6">
                 <h2 class="text-3xl font-bold" style="color: var(--plum);">Smart Project Brief</h2>
