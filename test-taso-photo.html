@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taso Photo Loading Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+            padding: 20px;
+        }
+        .test-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .progressive-image-container {
+            position: relative;
+            overflow: hidden;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 20px auto;
+            border: 3px solid #6b2c91;
+        }
+        .progressive-image-container img {
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .loading-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #f3e8ff 0%, #e0e7ff 50%, #fce7f3 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        .loading-spinner {
+            width: 2rem;
+            height: 2rem;
+            border: 3px solid rgba(107, 44, 145, 0.2);
+            border-top: 3px solid #6b2c91;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes breathing {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 0 0 20px rgba(107, 44, 145, 0.3);
+            }
+            50% { 
+                transform: scale(1.02);
+                box-shadow: 0 0 30px rgba(107, 44, 145, 0.5);
+            }
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .blur-load {
+            filter: blur(5px);
+            transform: scale(1.1);
+        }
+        .sharp-load {
+            filter: blur(0);
+            transform: scale(1);
+        }
+        .status {
+            text-align: center;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            background: #e8f5e8;
+            color: #2d5a2d;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Taso Photo Loading Test</h1>
+        <p>This test verifies the progressive loading functionality for Taso's high-quality photo in both locations.</p>
+        
+        <h2>Hero Section Photo (High Priority) - Uses headshot.png → taso1.jpg</h2>
+        <div class="progressive-image-container" style="width: 200px; height: 200px; margin: 0 auto;">
+            <!-- Loading placeholder -->
+            <div id="hero-taso-loading" class="loading-placeholder">
+                <div class="loading-spinner"></div>
+            </div>
+            
+            <!-- Low-quality placeholder -->
+            <img id="hero-taso-placeholder" src="assets/headshot.png" alt="Tamar Tsiklauri" class="w-full h-full object-cover opacity-0 blur-load" loading="eager">
+            
+            <!-- High-quality image -->
+            <img id="hero-taso-main" src="assets/taso1.jpg" alt="Tamar Tsiklauri - Founder & Creative Director" class="w-full h-full object-cover opacity-0 sharp-load" loading="lazy">
+        </div>
+        
+        <div id="hero-status" class="status">Loading hero photo...</div>
+        
+        <h2>About Section Photo (Lazy Loaded) - Uses taso1.jpg → headshot.png</h2>
+        <div class="progressive-image-container about-section" style="width: 150px; height: 150px; margin: 0 auto;">
+            <!-- Loading placeholder -->
+            <div id="taso-loading" class="loading-placeholder">
+                <div class="loading-spinner"></div>
+            </div>
+            
+            <!-- Low-quality placeholder -->
+            <img id="taso-placeholder" src="assets/taso1.jpg" alt="Tamar Tsiklauri" class="w-full h-full object-cover opacity-0 blur-load" loading="eager">
+            
+            <!-- High-quality image -->
+            <img id="taso-main" src="assets/headshot.png" alt="Tamar Tsiklauri - Professional Portrait" class="w-full h-full object-cover opacity-0 sharp-load" loading="lazy">
+        </div>
+        
+        <div id="about-status" class="status">Loading about photo...</div>
+        
+        <div style="margin-top: 20px;">
+            <h3>Test Steps:</h3>
+            <ol>
+                <li><strong>Hero Section:</strong> headshot.png (placeholder) → taso1.jpg (final)</li>
+                <li><strong>About Section:</strong> taso1.jpg (placeholder) → headshot.png (final)</li>
+                <li>Loading spinner should appear first for both</li>
+                <li>Low-quality placeholder should load and show (blurred)</li>
+                <li>High-quality image should load and replace placeholder</li>
+                <li>Final image should have breathing animation and glow effect</li>
+                <li>Check responsive sizing on different screen sizes</li>
+            </ol>
+            
+            <h3>Photo Strategy:</h3>
+            <ul>
+                <li><strong>Hero Section:</strong> Uses headshot.png as fast placeholder, loads taso1.jpg as high-quality final image</li>
+                <li><strong>About Section:</strong> Uses taso1.jpg as placeholder, loads headshot.png as professional final image</li>
+                <li>Both photos are utilized strategically for optimal loading performance</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function initializeProgressiveImageLoading() {
+            // Hero section photo
+            const heroLoadingElement = document.getElementById('hero-taso-loading');
+            const heroPlaceholderElement = document.getElementById('hero-taso-placeholder');
+            const heroMainElement = document.getElementById('hero-taso-main');
+            const heroStatusElement = document.getElementById('hero-status');
+            
+            // About section photo
+            const aboutLoadingElement = document.getElementById('taso-loading');
+            const aboutPlaceholderElement = document.getElementById('taso-placeholder');
+            const aboutMainElement = document.getElementById('taso-main');
+            const aboutStatusElement = document.getElementById('about-status');
+            
+            // Initialize hero section photo (higher priority)
+            if (heroLoadingElement && heroPlaceholderElement && heroMainElement) {
+                initializePhotoLoading(heroLoadingElement, heroPlaceholderElement, heroMainElement, 'hero', heroStatusElement);
+            }
+            
+            // Initialize about section photo
+            if (aboutLoadingElement && aboutPlaceholderElement && aboutMainElement) {
+                initializePhotoLoading(aboutLoadingElement, aboutPlaceholderElement, aboutMainElement, 'about', aboutStatusElement);
+            }
+        }
+        
+        function initializePhotoLoading(loadingElement, placeholderElement, mainElement, section, statusElement) {
+            // Show loading state initially
+            loadingElement.style.display = 'flex';
+            statusElement.textContent = `Loading ${section} placeholder...`;
+            
+            // Load placeholder first (should be fast)
+            placeholderElement.addEventListener('load', () => {
+                // Hide loading, show placeholder
+                loadingElement.style.display = 'none';
+                placeholderElement.style.opacity = '1';
+                statusElement.textContent = `${section} placeholder loaded, loading high-quality image...`;
+                
+                // Start loading main image
+                loadMainImage();
+            });
+            
+            // If placeholder fails to load, go straight to main image
+            placeholderElement.addEventListener('error', () => {
+                console.log(`${section} placeholder image failed to load, loading main image directly`);
+                loadingElement.style.display = 'none';
+                statusElement.textContent = `${section} placeholder failed, loading main image...`;
+                loadMainImage();
+            });
+            
+            function loadMainImage() {
+                // Preload the main image
+                const img = new Image();
+                
+                img.onload = () => {
+                    // Image loaded successfully
+                    console.log(`High-quality image loaded successfully in ${section} section`);
+                    statusElement.textContent = `${section} high-quality image loaded successfully!`;
+                    
+                    // Fade out placeholder and fade in main image
+                    setTimeout(() => {
+                        placeholderElement.style.opacity = '0';
+                        placeholderElement.style.transform = 'scale(1.1)';
+                    }, 300);
+                    
+                    setTimeout(() => {
+                        mainElement.style.opacity = '1';
+                        mainElement.style.transform = 'scale(1)';
+                        
+                        // Add a subtle glow effect
+                        mainElement.style.boxShadow = '0 0 20px rgba(107, 44, 145, 0.3)';
+                        
+                        // Add a gentle breathing animation
+                        mainElement.style.animation = 'breathing 4s ease-in-out infinite';
+                        
+                        statusElement.textContent = `✅ ${section} done! Image loaded with animations.`;
+                        statusElement.style.background = '#d4edda';
+                        statusElement.style.color = '#155724';
+                    }, 500);
+                };
+                
+                img.onerror = () => {
+                    console.error(`${section} main image failed to load, falling back to placeholder`);
+                    statusElement.textContent = `❌ ${section} main image failed to load, using placeholder`;
+                    statusElement.style.background = '#f8d7da';
+                    statusElement.style.color = '#721c24';
+                    // Keep placeholder visible if main image fails
+                    placeholderElement.style.opacity = '1';
+                    placeholderElement.style.filter = 'none';
+                    placeholderElement.style.transform = 'scale(1)';
+                };
+                
+                // Start loading
+                img.src = mainElement.src;
+            }
+        }
+        
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', initializeProgressiveImageLoading);
+    </script>
+</body>
+</html>
