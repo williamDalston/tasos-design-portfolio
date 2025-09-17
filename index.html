@@ -12,27 +12,27 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <link rel="stylesheet" href="css/styles.css">
     
-    <style>
-        /* Georgian Interior Designer Color Palette */
-        :root {
-            --sage-green: #8F9779;
-            --warm-cream: #F5F5DC;
-            --terracotta: #CD853F;
-            --warm-gray: #D3D3D3;
-            --forest-green: #2F4F2F;
-            --deep-cream: #F0E68C;
-            --warm-white: #FFF8DC;
-            --gold-accent: #DAA520;
-        }
+           <style>
+               /* BEPO Brand Color Palette */
+               :root {
+                   --plum: #6B2C91;
+                   --clay: #CD853F;
+                   --green: #2F4F2F;
+                   --blue: #2E86AB;
+                   --warm-cream: #F5F5DC;
+                   --deep-cream: #F0E68C;
+                   --warm-white: #FFF8DC;
+                   --heritage-gold: #DAA520;
+               }
         
-        /* Disable moving backgrounds - use elegant static design */
+        /* BEPO Heritage Design */
         body {
             background: linear-gradient(135deg, var(--warm-cream) 0%, var(--warm-white) 50%, var(--deep-cream) 100%);
             background-attachment: fixed;
             font-family: 'Playfair Display', 'Times New Roman', serif;
         }
         
-        /* Georgian Pattern Overlay */
+        /* BEPO Heritage Pattern Overlay */
         body::before {
             content: '';
             position: fixed;
@@ -41,8 +41,8 @@
             width: 100%;
             height: 100%;
             background-image: 
-                radial-gradient(circle at 25% 25%, rgba(143, 151, 121, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 75% 75%, rgba(205, 133, 63, 0.1) 0%, transparent 50%);
+                radial-gradient(circle at 25% 25%, rgba(107, 44, 145, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(46, 134, 171, 0.1) 0%, transparent 50%);
             pointer-events: none;
             z-index: -1;
         }
@@ -148,16 +148,16 @@
     <!-- Main Navigation -->
     <nav class="fixed top-1 left-0 right-0 z-40 p-6">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="px-6 py-3 rounded-full shadow-lg" style="background: rgba(245, 245, 220, 0.95); border: 2px solid var(--sage-green);">
-                <h1 class="text-xl md:text-2xl font-bold letter-spacing-wide" style="color: var(--forest-green); font-family: 'Playfair Display', serif;">Taso's Interiors</h1>
+            <div class="px-6 py-3 rounded-full shadow-lg" style="background: rgba(245, 245, 220, 0.95); border: 2px solid var(--plum);">
+                <h1 class="text-xl md:text-2xl font-bold letter-spacing-wide" style="color: var(--plum); font-family: 'Playfair Display', serif;">BEPO</h1>
             </div>
             <div class="hidden md:flex space-x-8">
-                <a href="#portfolio" class="transition-all duration-300 font-medium letter-spacing-wide hover:scale-105" style="color: var(--forest-green);">Portfolio</a>
-                <a href="#services" class="transition-all duration-300 font-medium letter-spacing-wide hover:scale-105" style="color: var(--forest-green);">Services</a>
-                <a href="#about" class="transition-all duration-300 font-medium letter-spacing-wide hover:scale-105" style="color: var(--forest-green);">About</a>
-                <a href="#process" class="transition-all duration-300 font-medium letter-spacing-wide hover:scale-105" style="color: var(--forest-green);">Process</a>
-                <a href="#blog" class="transition-all duration-300 font-medium letter-spacing-wide hover:scale-105" style="color: var(--forest-green);">Blog</a>
-                <a href="#contact" class="transition-all duration-300 font-medium letter-spacing-wide hover:scale-105" style="color: var(--forest-green);">Contact</a>
+                <a href="#bags" class="transition-all duration-300 font-medium letter-spacing-wide hover:scale-105" style="color: var(--plum);">Rain Bags</a>
+                <a href="#home" class="transition-all duration-300 font-medium letter-spacing-wide hover:scale-105" style="color: var(--plum);">Bepo Home</a>
+                <a href="#stories" class="transition-all duration-300 font-medium letter-spacing-wide hover:scale-105" style="color: var(--plum);">Stories</a>
+                <a href="#community" class="transition-all duration-300 font-medium letter-spacing-wide hover:scale-105" style="color: var(--plum);">Community</a>
+                <a href="#about" class="transition-all duration-300 font-medium letter-spacing-wide hover:scale-105" style="color: var(--plum);">About</a>
+                <a href="#contact" class="transition-all duration-300 font-medium letter-spacing-wide hover:scale-105" style="color: var(--plum);">Contact</a>
             </div>
             <button id="mobile-menu-btn" class="md:hidden p-2" style="color: var(--forest-green);" aria-label="Toggle mobile menu" aria-expanded="false">
                 <svg class="w-6 h-6 icon-rotate" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -181,71 +181,71 @@
     <!-- Hero Section -->
     <section id="hero" class="flex items-center justify-center min-h-screen p-6" style="background: linear-gradient(135deg, var(--warm-cream) 0%, var(--warm-white) 50%, var(--deep-cream) 100%);">
         <div class="text-center max-w-6xl mx-auto">
-            <div class="p-8 md:p-16 rounded-3xl shadow-2xl mb-8 relative overflow-hidden" style="background: rgba(245, 245, 220, 0.95); border: 3px solid var(--sage-green);">
-                <!-- Georgian Pattern Overlay -->
+            <div class="p-8 md:p-16 rounded-3xl shadow-2xl mb-8 relative overflow-hidden" style="background: rgba(245, 245, 220, 0.95); border: 3px solid var(--plum);">
+                <!-- BEPO Heritage Pattern Overlay -->
                 <div class="absolute inset-0 opacity-5">
-                    <div class="absolute top-10 left-10 w-32 h-32" style="background: repeating-linear-gradient(45deg, var(--sage-green), var(--sage-green) 10px, transparent 10px, transparent 20px); border-radius: 50%;"></div>
-                    <div class="absolute top-20 right-20 w-24 h-24" style="background: repeating-linear-gradient(-45deg, var(--terracotta), var(--terracotta) 8px, transparent 8px, transparent 16px); border-radius: 50%;"></div>
-                    <div class="absolute bottom-20 left-20 w-20 h-20" style="background: repeating-linear-gradient(90deg, var(--gold-accent), var(--gold-accent) 6px, transparent 6px, transparent 12px); border-radius: 50%;"></div>
+                    <div class="absolute top-10 left-10 w-32 h-32" style="background: repeating-linear-gradient(45deg, var(--plum), var(--plum) 10px, transparent 10px, transparent 20px); border-radius: 50%;"></div>
+                    <div class="absolute top-20 right-20 w-24 h-24" style="background: repeating-linear-gradient(-45deg, var(--blue), var(--blue) 8px, transparent 8px, transparent 16px); border-radius: 50%;"></div>
+                    <div class="absolute bottom-20 left-20 w-20 h-20" style="background: repeating-linear-gradient(90deg, var(--heritage-gold), var(--heritage-gold) 6px, transparent 6px, transparent 12px); border-radius: 50%;"></div>
                 </div>
                 
                 <div class="relative z-10">
                     <div class="mb-8">
-                        <span class="inline-block px-6 py-3 rounded-full text-sm font-medium mb-6" style="background: var(--sage-green); color: white;">
-                            🏛️ Georgian Interior Design Specialist
+                        <span class="inline-block px-6 py-3 rounded-full text-sm font-medium mb-6" style="background: var(--plum); color: white;">
+                            🌸 Heritage Lifestyle Brand
                         </span>
                     </div>
-                    <h1 class="text-6xl md:text-8xl font-bold mb-6 leading-tight" style="color: var(--forest-green); font-family: 'Playfair Display', serif;">
-                        Taso's Interiors
+                    <h1 class="text-6xl md:text-8xl font-bold mb-6 leading-tight" style="color: var(--plum); font-family: 'Playfair Display', serif;">
+                        BEPO
                     </h1>
-                    <div class="w-32 h-1 mx-auto mb-8" style="background: var(--terracotta);"></div>
-                    <p class="text-2xl md:text-3xl mb-6 leading-relaxed" style="color: var(--forest-green);">
-                        Georgian Interior Design & Home Goods Creation
+                    <div class="w-32 h-1 mx-auto mb-8" style="background: var(--clay);"></div>
+                    <p class="text-2xl md:text-3xl mb-6 leading-relaxed" style="color: var(--green);">
+                        Carry Your Story
                     </p>
-                               <p class="text-lg md:text-xl mb-12 leading-relaxed max-w-4xl mx-auto" style="color: var(--sage-green);">
-                                   Transform your home into an elegant sanctuary. Professional interior design and home goods creation that honor classical Georgian principles while creating warm, inviting spaces and beautiful patterns for modern living.
-                               </p>
+                    <p class="text-lg md:text-xl mb-12 leading-relaxed max-w-4xl mx-auto" style="color: var(--blue);">
+                        Everyday objects that offer protection, beauty, and connect women to their heritage, stories, and strength. Practical beauty that protects and inspires.
+                    </p>
                     
                     <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12">
-                        <div class="p-6 rounded-2xl text-center" style="background: rgba(255, 255, 255, 0.8); border: 2px solid var(--sage-green);">
-                            <div class="text-4xl mb-4">🏛️</div>
-                            <h3 class="text-xl font-bold mb-2" style="color: var(--forest-green);">Interior Design</h3>
-                            <p class="text-sm" style="color: var(--sage-green);">Timeless Georgian architecture and proportions</p>
-                        </div>
-                        <div class="p-6 rounded-2xl text-center" style="background: rgba(255, 255, 255, 0.8); border: 2px solid var(--terracotta);">
+                        <div class="p-6 rounded-2xl text-center" style="background: rgba(255, 255, 255, 0.8); border: 2px solid var(--plum);">
                             <div class="text-4xl mb-4">👜</div>
-                            <h3 class="text-xl font-bold mb-2" style="color: var(--forest-green);">Home Goods</h3>
-                            <p class="text-sm" style="color: var(--sage-green);">Bags, tablecloths, blankets, shirts & patterns</p>
+                            <h3 class="text-xl font-bold mb-2" style="color: var(--plum);">Rain Bags</h3>
+                            <p class="text-sm" style="color: var(--blue);">Waterproof, strong, lightweight protection bags with heritage stories</p>
                         </div>
-                        <div class="p-6 rounded-2xl text-center" style="background: rgba(255, 255, 255, 0.8); border: 2px solid var(--gold-accent);">
-                            <div class="text-4xl mb-4">🎨</div>
-                            <h3 class="text-xl font-bold mb-2" style="color: var(--forest-green);">Pattern Design</h3>
-                            <p class="text-sm" style="color: var(--sage-green);">Custom patterns for any home item</p>
+                        <div class="p-6 rounded-2xl text-center" style="background: rgba(255, 255, 255, 0.8); border: 2px solid var(--clay);">
+                            <div class="text-4xl mb-4">🏠</div>
+                            <h3 class="text-xl font-bold mb-2" style="color: var(--plum);">Bepo Home</h3>
+                            <p class="text-sm" style="color: var(--blue);">Home textiles and lifestyle items with cultural storytelling</p>
+                        </div>
+                        <div class="p-6 rounded-2xl text-center" style="background: rgba(255, 255, 255, 0.8); border: 2px solid var(--blue);">
+                            <div class="text-4xl mb-4">🌸</div>
+                            <h3 class="text-xl font-bold mb-2" style="color: var(--plum);">Community</h3>
+                            <p class="text-sm" style="color: var(--blue);">Workshops and talks on home as strength and cultural storytelling</p>
                         </div>
                     </div>
                     
                     <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                        <button class="px-10 py-4 rounded-full font-bold text-lg transition-all duration-300 hover:scale-105 shadow-lg" style="background: var(--terracotta); color: white; box-shadow: 0 4px 15px rgba(205, 133, 63, 0.3);">
-                            Schedule Consultation
+                        <button class="px-10 py-4 rounded-full font-bold text-lg transition-all duration-300 hover:scale-105 shadow-lg" style="background: var(--plum); color: white; box-shadow: 0 4px 15px rgba(107, 44, 145, 0.3);">
+                            Discover Rain Bags
                         </button>
-                        <button class="px-10 py-4 rounded-full font-bold text-lg transition-all duration-300 hover:scale-105 border-2" style="border-color: var(--sage-green); color: var(--forest-green);">
-                            View Portfolio
+                        <button class="px-10 py-4 rounded-full font-bold text-lg transition-all duration-300 hover:scale-105 border-2" style="border-color: var(--clay); color: var(--plum);">
+                            Read Our Stories
                         </button>
                     </div>
                     
                     <!-- Stats -->
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mt-12 sm:mt-16 pt-6 sm:pt-8" style="border-top: 2px solid var(--sage-green);">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mt-12 sm:mt-16 pt-6 sm:pt-8" style="border-top: 2px solid var(--plum);">
                         <div class="text-center">
-                            <div class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2" style="color: var(--forest-green);">100+</div>
-                            <div class="text-sm" style="color: var(--sage-green);">Homes Transformed</div>
+                            <div class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2" style="color: var(--plum);">500+</div>
+                            <div class="text-sm" style="color: var(--blue);">Stories Carried</div>
                         </div>
                         <div class="text-center">
-                            <div class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2" style="color: var(--forest-green);">8+</div>
-                            <div class="text-sm" style="color: var(--sage-green);">Years Experience</div>
+                            <div class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2" style="color: var(--plum);">3</div>
+                            <div class="text-sm" style="color: var(--blue);">Product Families</div>
                         </div>
                         <div class="text-center">
-                            <div class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2" style="color: var(--forest-green);">100%</div>
-                            <div class="text-sm" style="color: var(--sage-green);">Client Satisfaction</div>
+                            <div class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2" style="color: var(--plum);">100%</div>
+                            <div class="text-sm" style="color: var(--blue);">Heritage Inspired</div>
                         </div>
                     </div>
                 </div>
