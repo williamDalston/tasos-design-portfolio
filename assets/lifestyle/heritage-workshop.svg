@@ -1,0 +1,78 @@
+<svg width="700" height="500" viewBox="0 0 700 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="workshopGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F2E8D5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F8F5F0;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="700" height="500" fill="url(#workshopGradient)"/>
+  
+  <!-- Workshop Table -->
+  <rect x="100" y="300" width="500" height="20" fill="#B87333"/>
+  <rect x="80" y="320" width="540" height="10" fill="#9A5F2A"/>
+  
+  <!-- BEPO Bags on Table -->
+  <ellipse cx="200" cy="280" rx="30" ry="40" fill="#5A1A7A" stroke="#3D0F5A" stroke-width="2"/>
+  <ellipse cx="350" cy="280" rx="30" ry="40" fill="#8B4AAB" stroke="#3D0F5A" stroke-width="2"/>
+  <ellipse cx="500" cy="280" rx="30" ry="40" fill="#B87333" stroke="#3D0F5A" stroke-width="2"/>
+  
+  <!-- Georgian Motifs on Bags -->
+  <g transform="translate(200, 280)">
+    <circle cx="0" cy="0" r="10" fill="none" stroke="#C49B2A" stroke-width="1"/>
+  </g>
+  <g transform="translate(350, 280)">
+    <path d="M-8,-8 L8,8 M8,-8 L-8,8" stroke="#C49B2A" stroke-width="1"/>
+  </g>
+  <g transform="translate(500, 280)">
+    <path d="M0,-10 L8,0 L0,10 L-8,0 Z" fill="#C49B2A" opacity="0.6"/>
+  </g>
+  
+  <!-- Workshop Participants (Silhouettes) -->
+  <g transform="translate(150, 250)">
+    <ellipse cx="0" cy="0" rx="15" ry="20" fill="#2D1B3D"/>
+    <rect x="-10" y="20" width="20" height="40" fill="#5A1A7A"/>
+  </g>
+  
+  <g transform="translate(300, 250)">
+    <ellipse cx="0" cy="0" rx="15" ry="20" fill="#2D1B3D"/>
+    <rect x="-10" y="20" width="20" height="40" fill="#5A1A7A"/>
+  </g>
+  
+  <g transform="translate(450, 250)">
+    <ellipse cx="0" cy="0" rx="15" ry="20" fill="#2D1B3D"/>
+    <rect x="-10" y="20" width="20" height="40" fill="#5A1A7A"/>
+  </g>
+  
+  <!-- Tamar (Workshop Leader) -->
+  <g transform="translate(350, 200)">
+    <ellipse cx="0" cy="0" rx="20" ry="25" fill="#2D1B3D"/>
+    <rect x="-15" y="25" width="30" height="50" fill="#8B4AAB"/>
+    <rect x="-12" y="75" width="12" height="30" fill="#3D0F5A"/>
+    <rect x="0" y="75" width="12" height="30" fill="#3D0F5A"/>
+  </g>
+  
+  <!-- Heritage Patterns on Wall -->
+  <g transform="translate(100, 100)">
+    <rect x="0" y="0" width="500" height="150" fill="none" stroke="#C49B2A" stroke-width="2"/>
+    <circle cx="250" cy="75" r="30" fill="none" stroke="#1B4D1B" stroke-width="2"/>
+    <path d="M220,75 L280,75 M250,45 L250,105" stroke="#C49B2A" stroke-width="2"/>
+  </g>
+  
+  <!-- Workshop Materials -->
+  <rect x="50" y="350" width="20" height="30" fill="#C49B2A" opacity="0.6"/>
+  <rect x="80" y="350" width="20" height="30" fill="#1B4D1B" opacity="0.6"/>
+  <rect x="110" y="350" width="20" height="30" fill="#5A1A7A" opacity="0.6"/>
+  
+  <!-- Text -->
+  <text x="350" y="50" text-anchor="middle" font-family="Playfair Display, serif" font-size="28" font-weight="bold" fill="#5A1A7A">
+    BEPO Heritage Workshops
+  </text>
+  <text x="350" y="80" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" fill="#B87333">
+    Learn traditional Georgian techniques while creating your own heritage-inspired bag
+  </text>
+  <text x="350" y="450" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#1B4D1B">
+    Join our community of women celebrating cultural heritage through craft
+  </text>
+</svg>

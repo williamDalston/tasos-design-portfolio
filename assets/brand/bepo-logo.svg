@@ -1,0 +1,49 @@
+<svg width="300" height="200" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#5A1A7A;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#8B4AAB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#B87333;stop-opacity:1" />
+    </linearGradient>
+    <pattern id="heritagePattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="10" r="2" fill="#C49B2A" opacity="0.3"/>
+    </pattern>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="300" height="200" fill="#FEFCF8"/>
+  
+  <!-- Main Logo Circle -->
+  <circle cx="150" cy="100" r="80" fill="url(#logoGradient)" stroke="#3D0F5A" stroke-width="3"/>
+  
+  <!-- Heritage Pattern Overlay -->
+  <circle cx="150" cy="100" r="70" fill="url(#heritagePattern)"/>
+  
+  <!-- Georgian Cross in Center -->
+  <g transform="translate(150, 100)">
+    <rect x="-15" y="-3" width="30" height="6" fill="#C49B2A"/>
+    <rect x="-3" y="-15" width="6" height="30" fill="#C49B2A"/>
+    <circle cx="0" cy="0" r="20" fill="none" stroke="#1B4D1B" stroke-width="2"/>
+  </g>
+  
+  <!-- BEPO Text -->
+  <text x="150" y="130" text-anchor="middle" font-family="Playfair Display, serif" font-size="32" font-weight="bold" fill="#FEFCF8">
+    BEPO
+  </text>
+  
+  <!-- Tagline -->
+  <text x="150" y="160" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#5A1A7A">
+    Carry Your Story
+  </text>
+  
+  <!-- Decorative Elements -->
+  <g transform="translate(150, 100)">
+    <circle cx="-50" cy="-50" r="8" fill="#C49B2A" opacity="0.6"/>
+    <circle cx="50" cy="-50" r="8" fill="#C49B2A" opacity="0.6"/>
+    <circle cx="-50" cy="50" r="8" fill="#1B4D1B" opacity="0.6"/>
+    <circle cx="50" cy="50" r="8" fill="#1B4D1B" opacity="0.6"/>
+  </g>
+  
+  <!-- Border -->
+  <rect x="20" y="20" width="260" height="160" fill="none" stroke="#C49B2A" stroke-width="2"/>
+</svg>

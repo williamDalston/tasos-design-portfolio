@@ -1,14 +1,14 @@
 # 📋 **COMPLETE WEBSITE DOCUMENTATION**
-## Taso's Design Studio - Professional Brand Website
+## BEPO - Heritage-Inspired Waterproof Bags Website
 
 ---
 
 ## 🎯 **PROJECT OVERVIEW**
 
-**Project Name:** Taso's Design Studio  
-**Type:** Professional Design Portfolio & E-commerce Website  
-**Target Audience:** Potential clients, design community, business partners  
-**Primary Goal:** Showcase design expertise while selling services and building brand authority  
+**Project Name:** BEPO Heritage Bags  
+**Type:** Heritage-Inspired Waterproof Bags E-commerce Website  
+**Target Audience:** Women who value cultural heritage, waterproof protection, and authentic design  
+**Primary Goal:** Showcase heritage-inspired waterproof bags while celebrating Georgian culture and women's empowerment  
 
 ---
 

@@ -1,14 +1,14 @@
-# Taso's Designs - Modular Structure
+# BEPO - Heritage-Inspired Waterproof Bags
 
-This project has been refactored from a monolithic HTML file into a modular, maintainable structure.
+This website showcases BEPO's heritage-inspired waterproof bags that protect your valuables while connecting you to Georgian culture and women's strength. Founded by Tamar Tsiklauri.
 
 ## Project Structure
 
 ```
-tasos-design/
-├── index.html              # Main HTML file with minimal markup
+bepo-design/
+├── index.html              # Main BEPO website with heritage-inspired design
 ├── css/
-│   └── styles.css          # All CSS styles and animations
+│   └── styles.css          # Georgian-inspired styling and animations
 ├── js/
 │   ├── core/
 │   │   ├── App.js          # Main application manager
@@ -17,63 +17,39 @@ tasos-design/
 │       ├── FluidWorld.js   # Fluid shader world implementation
 │       ├── GlassWorld.js   # 3D glass crystal world
 │       └── AuroraWorld.js  # Aurora shader world implementation
+├── assets/                 # Product images and founder photos
 └── README.md
 ```
 
-## Key Improvements
+## About BEPO
 
-### 1. **Separation of Concerns**
-- **HTML**: Clean markup with semantic structure
-- **CSS**: All styles centralized in `css/styles.css`
-- **JavaScript**: Modular ES6 classes with clear responsibilities
+### **Heritage-Inspired Design**
+- **Waterproof Protection**: Keep your valuables safe in any weather
+- **Cultural Storytelling**: Each bag features authentic Georgian motifs
+- **Women's Empowerment**: Designed to celebrate strength and heritage
 
-### 2. **Modular Architecture**
-- **WorldBase**: Abstract base class defining the world interface
-- **Individual Worlds**: Each world is a separate module with its own file
-- **App Manager**: Centralized application logic and world switching
+### **Founder Story**
+- **Tamar Tsiklauri**: Fashion designer and community development expert
+- **Cultural Preservation**: Dedicated to protecting Georgian heritage
+- **Community Focus**: Empowering women through practical, beautiful products
 
-### 3. **Maintainability**
-- Easy to add new worlds by extending `WorldBase`
-- Clear file organization makes code easy to navigate
-- Each component has a single responsibility
+### **Product Features**
+- **Waterproof Materials**: Durable protection for your essentials
+- **Authentic Motifs**: Traditional Georgian patterns and designs
+- **Handcrafted Quality**: Made with attention to detail and cultural significance
 
-### 4. **Performance**
-- ES6 modules enable better tree-shaking
-- Cleaner separation allows for better optimization
-- Easier to implement lazy loading if needed
+## Technical Features
 
-## Adding New Worlds
+### **Interactive Backgrounds**
+- **Fluid World**: Dynamic fluid-like shader effects
+- **Glass World**: 3D glass crystal formations with realistic lighting
+- **Aurora World**: Aurora-like flowing colors with complex patterns
 
-To add a new world:
-
-1. Create a new file in `js/worlds/YourWorld.js`
-2. Extend the `WorldBase` class
-3. Implement the required methods: `init()`, `update()`, `onResize()`, `onPointerMove()`
-4. Add the world to the switch statement in `App.js`
-5. Add a button to the HTML
-
-Example:
-```javascript
-import { WorldBase } from '../core/WorldBase.js';
-
-export class YourWorld extends WorldBase {
-    init() {
-        // Your world initialization
-    }
-    
-    update(deltaTime) {
-        // Your world update logic
-    }
-    
-    onResize(w, h, ar) {
-        // Handle resize
-    }
-    
-    onPointerMove(x, y) {
-        // Handle mouse movement
-    }
-}
-```
+### **Advanced Interactions**
+- **Cursor Trail System**: Triple cursor trail with physics-based movement
+- **Particle Effects**: Floating particles with realistic physics
+- **Magnetic Hover Effects**: Elements respond to cursor proximity
+- **Heritage-Inspired Animations**: Georgian cultural motifs and patterns
 
 ## Development
 
@@ -81,7 +57,7 @@ The project uses ES6 modules, so it needs to be served from a web server (not op
 
 ```bash
 # Python 3
-python -m http.server 8000
+python3 -m http.server 8000
 
 # Node.js (if you have http-server installed)
 npx http-server
@@ -89,7 +65,7 @@ npx http-server
 # VS Code Live Server extension
 ```
 
-Then open `http://localhost:8000` in your browser.
+Then open `http://localhost:8000` in your browser to experience BEPO's heritage-inspired waterproof bags.
 
 
 

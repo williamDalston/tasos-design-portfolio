@@ -1,7 +1,7 @@
 {
   "name": "bepo-design",
   "version": "1.0.0",
-  "description": "BEPO - Heritage Lifestyle Brand Website",
+  "description": "BEPO - Heritage-Inspired Waterproof Bags That Tell Your Story",
   "main": "index.html",
   "scripts": {
     "dev": "python3 -m http.server 8080",
@@ -15,13 +15,13 @@
     "deploy": "npm run build && git add . && git commit -m 'Production build' && git push origin main"
   },
   "keywords": [
-    "heritage",
-    "lifestyle",
-    "brand",
-    "georgian",
-    "design",
-    "women-empowerment",
-    "e-commerce"
+    "heritage bags",
+    "waterproof bags",
+    "georgian design",
+    "cultural storytelling",
+    "women empowerment",
+    "handcrafted",
+    "cultural preservation"
   ],
   "author": "Tamar Tsiklauri",
   "license": "MIT",

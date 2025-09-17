@@ -1,0 +1,72 @@
+<svg width="400" height="500" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="portraitGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F2E8D5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F8F5F0;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="backgroundGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#5A1A7A;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#B87333;stop-opacity:0.1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="500" fill="url(#backgroundGradient)"/>
+  
+  <!-- Portrait Frame -->
+  <ellipse cx="200" cy="200" rx="120" ry="150" fill="url(#portraitGradient)" stroke="#5A1A7A" stroke-width="4"/>
+  
+  <!-- Tamar's Face -->
+  <ellipse cx="200" cy="180" rx="80" ry="100" fill="#F2E8D5"/>
+  
+  <!-- Hair -->
+  <path d="M120,120 Q200,80 280,120 Q280,200 200,200 Q120,200 120,120" fill="#2D1B3D"/>
+  
+  <!-- Eyes -->
+  <ellipse cx="180" cy="160" rx="8" ry="12" fill="#1B4D1B"/>
+  <ellipse cx="220" cy="160" rx="8" ry="12" fill="#1B4D1B"/>
+  <circle cx="180" cy="160" r="4" fill="#2D1B3D"/>
+  <circle cx="220" cy="160" r="4" fill="#2D1B3D"/>
+  
+  <!-- Nose -->
+  <path d="M200,170 Q195,180 200,190" stroke="#B87333" stroke-width="2" fill="none"/>
+  
+  <!-- Mouth -->
+  <path d="M185,200 Q200,210 215,200" stroke="#5A1A7A" stroke-width="2" fill="none"/>
+  
+  <!-- Professional Attire -->
+  <rect x="150" y="280" width="100" height="80" fill="#5A1A7A"/>
+  <rect x="160" y="290" width="80" height="60" fill="#8B4AAB"/>
+  
+  <!-- Georgian Jewelry -->
+  <circle cx="200" cy="250" r="15" fill="none" stroke="#C49B2A" stroke-width="3"/>
+  <circle cx="200" cy="250" r="8" fill="#C49B2A" opacity="0.6"/>
+  
+  <!-- BEPO Bag in Hand -->
+  <ellipse cx="280" cy="320" rx="25" ry="35" fill="#B87333" stroke="#9A5F2A" stroke-width="2"/>
+  <g transform="translate(280, 320)">
+    <circle cx="0" cy="0" r="8" fill="none" stroke="#C49B2A" stroke-width="1"/>
+  </g>
+  
+  <!-- Heritage Motifs Around Portrait -->
+  <g transform="translate(200, 200)">
+    <circle cx="0" cy="-130" r="20" fill="none" stroke="#C49B2A" stroke-width="2"/>
+    <path d="M-15,-130 L15,-130 M0,-145 L0,-115" stroke="#C49B2A" stroke-width="1"/>
+  </g>
+  
+  <g transform="translate(200, 200)">
+    <circle cx="0" cy="130" r="20" fill="none" stroke="#1B4D1B" stroke-width="2"/>
+    <path d="M-10,-10 L10,10 M10,-10 L-10,10" stroke="#1B4D1B" stroke-width="1"/>
+  </g>
+  
+  <!-- Text -->
+  <text x="200" y="420" text-anchor="middle" font-family="Playfair Display, serif" font-size="24" font-weight="bold" fill="#5A1A7A">
+    Tamar Tsiklauri
+  </text>
+  <text x="200" y="445" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" fill="#B87333">
+    Founder & Creative Director
+  </text>
+  <text x="200" y="470" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#1B4D1B">
+    Heritage Designer & Community Leader
+  </text>
+</svg>
