@@ -1,0 +1,16 @@
+{
+  "name": "tasos-design",
+  "version": "1.0.0",
+  "description": "Interactive Three.js design showcase with modular architecture",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "serve": "npx http-server -p 8000 -o"
+  },
+  "keywords": ["three.js", "webgl", "shaders", "interactive", "design"],
+  "author": "Taso",
+  "license": "MIT"
+}
+
+
+

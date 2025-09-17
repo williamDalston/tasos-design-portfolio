@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test - Taso's Designs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f0f0f0;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .status {
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .pass { background: #d4edda; color: #155724; }
+        .fail { background: #f8d7da; color: #721c24; }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Taso's Designs - Test Suite</h1>
+    
+    <div class="test-section">
+        <h2>File Structure Tests</h2>
+        <div id="file-tests"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Module Loading Tests</h2>
+        <div id="module-tests"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Three.js Integration Tests</h2>
+        <div id="threejs-tests"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Performance Tests</h2>
+        <div id="performance-tests"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Actions</h2>
+        <button onclick="runAllTests()">Run All Tests</button>
+        <button onclick="openMainApp()">Open Main App</button>
+    </div>
+
+    <script>
+        const tests = {
+            fileStructure: [
+                { name: 'index.html exists', path: './index.html' },
+                { name: 'CSS file exists', path: './css/styles.css' },
+                { name: 'App.js exists', path: './js/core/App.js' },
+                { name: 'WorldBase.js exists', path: './js/core/WorldBase.js' },
+                { name: 'FluidWorld.js exists', path: './js/worlds/FluidWorld.js' },
+                { name: 'GlassWorld.js exists', path: './js/worlds/GlassWorld.js' },
+                { name: 'AuroraWorld.js exists', path: './js/worlds/AuroraWorld.js' }
+            ],
+            
+            async runFileTests() {
+                const container = document.getElementById('file-tests');
+                container.innerHTML = '';
+                
+                for (const test of this.fileStructure) {
+                    try {
+                        const response = await fetch(test.path);
+                        const status = response.ok ? 'pass' : 'fail';
+                        const text = response.ok ? 'PASS' : 'FAIL';
+                        container.innerHTML += `<div class="status ${status}">${test.name}: ${text}</div>`;
+                    } catch (error) {
+                        container.innerHTML += `<div class="status fail">${test.name}: FAIL - ${error.message}</div>`;
+                    }
+                }
+            },
+            
+            async runModuleTests() {
+                const container = document.getElementById('module-tests');
+                container.innerHTML = '';
+                
+                try {
+                    const { App } = await import('./js/core/App.js');
+                    container.innerHTML += '<div class="status pass">App module loads: PASS</div>';
+                    
+                    const { WorldBase } = await import('./js/core/WorldBase.js');
+                    container.innerHTML += '<div class="status pass">WorldBase module loads: PASS</div>';
+                    
+                    const { FluidWorld } = await import('./js/worlds/FluidWorld.js');
+                    container.innerHTML += '<div class="status pass">FluidWorld module loads: PASS</div>';
+                    
+                    const { GlassWorld } = await import('./js/worlds/GlassWorld.js');
+                    container.innerHTML += '<div class="status pass">GlassWorld module loads: PASS</div>';
+                    
+                    const { AuroraWorld } = await import('./js/worlds/AuroraWorld.js');
+                    container.innerHTML += '<div class="status pass">AuroraWorld module loads: PASS</div>';
+                    
+                } catch (error) {
+                    container.innerHTML += `<div class="status fail">Module loading: FAIL - ${error.message}</div>`;
+                }
+            },
+            
+            async runThreeJSTests() {
+                const container = document.getElementById('threejs-tests');
+                container.innerHTML = '';
+                
+                if (typeof THREE !== 'undefined') {
+                    container.innerHTML += '<div class="status pass">Three.js loaded: PASS</div>';
+                    container.innerHTML += `<div class="status pass">Three.js version: ${THREE.REVISION}</div>`;
+                } else {
+                    container.innerHTML += '<div class="status fail">Three.js loaded: FAIL</div>';
+                }
+            },
+            
+            async runPerformanceTests() {
+                const container = document.getElementById('performance-tests');
+                container.innerHTML = '';
+                
+                // Test WebGL support
+                const canvas = document.createElement('canvas');
+                const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+                if (gl) {
+                    container.innerHTML += '<div class="status pass">WebGL support: PASS</div>';
+                } else {
+                    container.innerHTML += '<div class="status fail">WebGL support: FAIL</div>';
+                }
+                
+                // Test device pixel ratio
+                const dpr = window.devicePixelRatio || 1;
+                container.innerHTML += `<div class="status pass">Device Pixel Ratio: ${dpr}</div>`;
+                
+                // Test viewport size
+                const width = window.innerWidth;
+                const height = window.innerHeight;
+                container.innerHTML += `<div class="status pass">Viewport: ${width}x${height}</div>`;
+            },
+            
+            async runAllTests() {
+                await this.runFileTests();
+                await this.runModuleTests();
+                await this.runThreeJSTests();
+                await this.runPerformanceTests();
+            }
+        };
+        
+        function openMainApp() {
+            window.open('./index.html', '_blank');
+        }
+        
+        // Run tests on load
+        window.onload = () => {
+            tests.runAllTests();
+        };
+    </script>
+</body>
+</html>
+
+
+
