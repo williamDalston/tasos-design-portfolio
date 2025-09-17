@@ -1151,15 +1151,19 @@
                         >
                         <input 
                             type="email" 
+                            id="lead-email"
                             name="email" 
                             placeholder="Your Email" 
+                            autocomplete="email"
                             required
                             class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent backdrop-blur-sm"
                         >
                         <input 
                             type="text" 
+                            id="lead-company"
                             name="company" 
                             placeholder="Company (Optional)" 
+                            autocomplete="organization"
                             class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent backdrop-blur-sm"
                         >
                         <button 
@@ -1201,15 +1205,19 @@
                         <div class="grid md:grid-cols-2 gap-6">
                             <input 
                                 type="text" 
+                                id="project-name"
                                 name="name" 
                                 placeholder="Your Name" 
+                                autocomplete="name"
                                 required
                                 class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent backdrop-blur-sm"
                             >
                             <input 
                                 type="email" 
+                                id="project-email"
                                 name="email" 
                                 placeholder="Your Email" 
+                                autocomplete="email"
                                 required
                                 class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent backdrop-blur-sm"
                             >
@@ -1217,13 +1225,17 @@
                         
                         <input 
                             type="text" 
+                            id="project-company"
                             name="company" 
                             placeholder="Company Name" 
+                            autocomplete="organization"
                             class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent backdrop-blur-sm"
                         >
                         
                         <select 
+                            id="project-type"
                             name="project-type" 
+                            autocomplete="off"
                             required
                             class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent backdrop-blur-sm"
                         >
@@ -1236,7 +1248,9 @@
                         </select>
                         
                         <select 
+                            id="project-budget"
                             name="budget" 
+                            autocomplete="off"
                             required
                             class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent backdrop-blur-sm"
                         >
@@ -1249,7 +1263,9 @@
                         </select>
                         
                         <select 
+                            id="project-timeline"
                             name="timeline" 
+                            autocomplete="off"
                             required
                             class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent backdrop-blur-sm"
                         >
@@ -1262,8 +1278,10 @@
                         </select>
                         
                         <textarea 
+                            id="project-details"
                             name="project-details" 
                             placeholder="Tell us about your project goals, target audience, and any specific requirements..." 
+                            autocomplete="off"
                             rows="4" 
                             class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent backdrop-blur-sm resize-none"
                         ></textarea>
@@ -2661,7 +2679,7 @@
                             📐 Add more white space
                         </div>
                     </div>
-                    <input type="text" class="ai-input" placeholder="Ask me about design..." onkeypress="handleAIInput(event)">
+                    <input type="text" id="ai-input" name="ai-input" class="ai-input" placeholder="Ask me about design..." autocomplete="off" onkeypress="handleAIInput(event)">
                 `;
                 document.body.appendChild(assistant);
                 
