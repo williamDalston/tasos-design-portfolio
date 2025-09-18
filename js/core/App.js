@@ -2,6 +2,7 @@ import { FluidWorld } from '../worlds/FluidWorld.js';
 import { GlassWorld } from '../worlds/GlassWorld.js';
 import { AuroraWorld } from '../worlds/AuroraWorld.js';
 import { Phase3Features } from './Phase3Features.js';
+import { NavigationTransitions } from './NavigationTransitions.js';
 
 /**
  * Main application class that manages the Three.js scene and world switching
@@ -18,6 +19,7 @@ export class App {
         this.aspectRatio = 0;
         this.quality = this.detectQuality();
         this.phase3Features = null;
+        this.navigationTransitions = null;
         
         // Phase 2: Advanced interactive features
         this.cursorTrail = [];
@@ -75,6 +77,10 @@ export class App {
             
             // Initialize Phase 3 features
             this.phase3Features = new Phase3Features();
+            
+            // Initialize Navigation Transitions
+            this.navigationTransitions = new NavigationTransitions();
+            this.navigationTransitions.init();
             
             // Hide loading indicator
             this.hideLoading();

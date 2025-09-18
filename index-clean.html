@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BEPO - Heritage-Inspired Bags That Tell Your Story</title>
+    <meta name="description" content="Discover BEPO's waterproof heritage bags that protect your valuables while connecting you to Georgian culture and women's strength. Handcrafted by Tamar Tsiklauri.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        :root {
+            /* BEPO Brand Colors */
+            --plum: #5A1A7A;
+            --clay: #B87333;
+            --green: #1B4D1B;
+            --blue: #1E6B8A;
+            --heritage-gold: #C49B2A;
+            --warm-white: #FEFCF8;
+            --warm-cream: #F8F5F0;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--plum) 0%, var(--clay) 50%, var(--green) 100%);
+            color: var(--warm-white);
+            line-height: 1.6;
+        }
+        
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(90, 26, 122, 0.9) 0%, rgba(184, 115, 51, 0.8) 50%, rgba(27, 77, 27, 0.9) 100%);
+        }
+        
+        .card {
+            background: rgba(45, 27, 61, 0.95);
+            border: 2px solid var(--heritage-gold);
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn-primary {
+            background: var(--heritage-gold);
+            color: var(--plum);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: var(--plum);
+            color: var(--warm-white);
+            transform: translateY(-2px);
+        }
+        
+        .section-spacing {
+            padding: 5rem 0;
+        }
+        
+        .container-custom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-md border-b border-white/10">
+        <div class="container-custom">
+            <div class="flex justify-between items-center py-4">
+                <div class="font-display text-2xl font-bold text-white">
+                    BEPO
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-white hover:text-yellow-400 transition-colors">Home</a>
+                    <a href="#products" class="text-white hover:text-yellow-400 transition-colors">Products</a>
+                    <a href="#about" class="text-white hover:text-yellow-400 transition-colors">About</a>
+                    <a href="#contact" class="text-white hover:text-yellow-400 transition-colors">Contact</a>
+                </div>
+                <button class="md:hidden text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg min-h-screen flex items-center">
+        <div class="container-custom">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h1 class="font-display text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                        Heritage-Inspired Bags That Protect & Empower
+                    </h1>
+                    <p class="text-xl mb-8 text-yellow-200">
+                        Waterproof Protection • Cultural Heritage • Women's Strength
+                    </p>
+                    <p class="text-lg mb-8 text-white/90">
+                        Every BEPO bag protects your valuables while celebrating your heritage - combining waterproof functionality with authentic Georgian cultural storytelling.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button class="btn-primary px-8 py-4 rounded-full font-semibold text-lg">
+                            Explore Collection
+                        </button>
+                        <button class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-plum transition-all">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+                <div class="flex justify-center">
+                    <div class="w-80 h-80 bg-white/10 rounded-full flex items-center justify-center">
+                        <div class="text-8xl">👜</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="section-spacing bg-black/20">
+        <div class="container-custom">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-4xl font-bold mb-6">Our Heritage Collection</h2>
+                <p class="text-xl text-white/80 max-w-2xl mx-auto">
+                    Handcrafted waterproof bags featuring authentic Georgian motifs that tell stories of women's strength and cultural heritage.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Rain Bags -->
+                <div class="card p-8 rounded-2xl text-center">
+                    <div class="text-6xl mb-6">👜</div>
+                    <h3 class="font-display text-2xl font-bold mb-4">Rain Bags</h3>
+                    <p class="mb-6 text-white/80">
+                        Waterproof protection bags featuring authentic Georgian cultural motifs. Keep your valuables safe while celebrating your heritage.
+                    </p>
+                    <div class="text-yellow-400 font-semibold mb-4">Starting at $89</div>
+                    <button class="btn-primary w-full py-3 rounded-full font-semibold">
+                        View Collection
+                    </button>
+                </div>
+                
+                <!-- Home Collection -->
+                <div class="card p-8 rounded-2xl text-center">
+                    <div class="text-6xl mb-6">🏠</div>
+                    <h3 class="font-display text-2xl font-bold mb-4">Bepo Home</h3>
+                    <p class="mb-6 text-white/80">
+                        Home textiles & lifestyle items featuring traditional Georgian patterns and cultural storytelling.
+                    </p>
+                    <div class="text-yellow-400 font-semibold mb-4">Coming Soon</div>
+                    <button class="border-2 border-yellow-400 text-yellow-400 w-full py-3 rounded-full font-semibold hover:bg-yellow-400 hover:text-plum transition-all">
+                        Join Waitlist
+                    </button>
+                </div>
+                
+                <!-- Community -->
+                <div class="card p-8 rounded-2xl text-center">
+                    <div class="text-6xl mb-6">👥</div>
+                    <h3 class="font-display text-2xl font-bold mb-4">Community</h3>
+                    <p class="mb-6 text-white/80">
+                        Cultural workshops & events celebrating Georgian heritage and women's empowerment.
+                    </p>
+                    <div class="text-yellow-400 font-semibold mb-4">Free Events</div>
+                    <button class="border-2 border-yellow-400 text-yellow-400 w-full py-3 rounded-full font-semibold hover:bg-yellow-400 hover:text-plum transition-all">
+                        Join Community
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-spacing">
+        <div class="container-custom">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="font-display text-4xl font-bold mb-6">Meet Tamar Tsiklauri</h2>
+                    <p class="text-lg mb-6 text-white/90">
+                        Founder & Creative Director of BEPO, Tamar combines her expertise in fashion design with her passion for cultural preservation and women's empowerment.
+                    </p>
+                    <p class="text-lg mb-8 text-white/90">
+                        Through her work with community-led development programs, Tamar learned that true empowerment comes from connecting women to their cultural roots while providing practical tools for daily life.
+                    </p>
+                    <button class="btn-primary px-8 py-4 rounded-full font-semibold text-lg">
+                        Read Full Story
+                    </button>
+                </div>
+                <div class="flex justify-center">
+                    <div class="w-80 h-80 bg-white/10 rounded-full flex items-center justify-center">
+                        <div class="text-6xl">👩‍🎨</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-spacing bg-black/20">
+        <div class="container-custom">
+            <div class="text-center">
+                <h2 class="font-display text-4xl font-bold mb-6">Get In Touch</h2>
+                <p class="text-xl mb-12 text-white/80 max-w-2xl mx-auto">
+                    Ready to start your heritage journey? We'd love to hear from you.
+                </p>
+                <div class="max-w-md mx-auto">
+                    <div class="space-y-4">
+                        <input type="text" placeholder="Your Name" class="w-full px-6 py-4 rounded-full bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:border-yellow-400">
+                        <input type="email" placeholder="Your Email" class="w-full px-6 py-4 rounded-full bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:border-yellow-400">
+                        <textarea placeholder="Your Message" rows="4" class="w-full px-6 py-4 rounded-2xl bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:border-yellow-400 resize-none"></textarea>
+                        <button class="btn-primary w-full py-4 rounded-full font-semibold text-lg">
+                            Send Message
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black/40 py-12">
+        <div class="container-custom">
+            <div class="text-center">
+                <div class="font-display text-2xl font-bold mb-4">BEPO</div>
+                <p class="text-white/60 mb-6">Heritage-Inspired Bags That Tell Your Story</p>
+                <div class="flex justify-center space-x-6">
+                    <a href="#" class="text-white/60 hover:text-yellow-400 transition-colors">Instagram</a>
+                    <a href="#" class="text-white/60 hover:text-yellow-400 transition-colors">Facebook</a>
+                    <a href="#" class="text-white/60 hover:text-yellow-400 transition-colors">Email</a>
+                </div>
+                <div class="mt-8 pt-8 border-t border-white/20 text-white/40 text-sm">
+                    © 2024 BEPO. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Simple mobile menu toggle
+        const mobileMenuBtn = document.querySelector('button[class*="md:hidden"]');
+        const mobileMenu = document.createElement('div');
+        mobileMenu.className = 'md:hidden fixed top-16 left-0 right-0 bg-black/90 backdrop-blur-md p-6 space-y-4 hidden';
+        mobileMenu.innerHTML = `
+            <a href="#home" class="block text-white hover:text-yellow-400 transition-colors">Home</a>
+            <a href="#products" class="block text-white hover:text-yellow-400 transition-colors">Products</a>
+            <a href="#about" class="block text-white hover:text-yellow-400 transition-colors">About</a>
+            <a href="#contact" class="block text-white hover:text-yellow-400 transition-colors">Contact</a>
+        `;
+        document.body.appendChild(mobileMenu);
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
+
+
+
